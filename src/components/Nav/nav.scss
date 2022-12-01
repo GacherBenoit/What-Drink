@@ -1,0 +1,21 @@
+.nav{
+/*   position: absolute; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  align-items: center;
+ 
+  }
+  .navbar{
+    margin: auto;
+    
+    &--link{
+
+        &__list{
+
+            display: flex;
+        }
+    }
+  }

@@ -1,0 +1,15 @@
+@use 'reset';
+@use 'vars';
+
+body {
+width: 100vw;
+height: 100vh;
+font-family: sans-serif;
+background-color: red;
+margin: auto;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
