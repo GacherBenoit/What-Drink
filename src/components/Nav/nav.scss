@@ -1,21 +1,120 @@
-.nav{
-/*   position: absolute; */
+.nav {
+  /*   position: absolute; */
   display: flex;
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
   padding: 1rem;
   align-items: center;
- 
-  }
-  .navbar{
-    margin: auto;
-    
-    &--link{
+  /* align-items: baseline; */
+  //Pour redescendre sur la meme ligne logo et menu
+}
 
-        &__list{
+.navbar {
+  margin: auto;
 
-            display: flex;
+  &--link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* backdrop-filter: blur(5px); */
+
+    &__list {
+      opacity: 0;
+      /* display: flex;
+      flex-direction: column;
+      margin-top: 7rem;
+ */
+      &__element {
+
+        padding-top: 4rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+  
+
+        a {
+          text-decoration: none;
+          color: white;
+          font-weight: 500;
+          font-size: 1.2rem;
+          padding: 0.7rem;
         }
+
+        a:hover {
+          font-weight: bolder;
+        }
+      }
     }
   }
+}
+
+.checkbox {
+  position: absolute;
+  display: block;
+  height: 32px;
+  width: 32px;
+  top: 24px;
+  right: 12px;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hamburger-lines {
+  display: block;
+  height: 26px;
+  width: 32px;
+  position: absolute;
+  top: 24px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-lines .line {
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background: #0e2431;
+}
+
+.hamburger-lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hamburger-lines .line2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hamburger-lines .line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.checkbox:checked~.hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+.checkbox:checked~.hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+.checkbox:checked~.hamburger-lines .line3 {
+  transform: rotate(-45deg);
+}
+
+.checkbox:checked~.navbar--link__list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7rem;
+  opacity: 100;
+}
