@@ -12,4 +12,10 @@ margin: auto;
 #root {
   width: 100vw;
   height: 100vh;
+  font-size: 16px;
 }
+@media screen and (min-width: 768px) {
+  #root {
+    font-size: 24px;
+  }
+  }
