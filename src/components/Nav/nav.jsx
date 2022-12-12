@@ -2,31 +2,31 @@
 import './nav.scss';
 
 // Import NPM
-import React, { useState } from 'react';
-
+import React from 'react';
 // Import img
 import icon from '../../assets/icon.png';
 
 function Nav() {
   return (
-    <div className="nav">
+    <div className="navbar">
       <nav>
-        <a href="home" className="navbar--logo">
-          <img className="nav--icon" src={icon} alt="" />
-        </a>
-        <div className="navbar--items">
-          <input type="checkbox" id="burger-menu" className="navbar--burger__menu__button" />
-          <div className="navbar--burger__menu">
-            <span className="navbar--burger__menu__element" />
-            <span className="navbar--burger__menu__element" />
-            <span className="navbar--burger__menu__element" />
+        <div className="navbar--burger__menu">
+          <input className="navbar--burger__menu__checkbox" type="checkbox" name="" id="" />
+          <div className="navbar--burger__menu__lines">
+            <span className="navbar--burger__menu__lines__one" />
+            <span className="navbar--burger__menu__lines__two" />
+            <span className="navbar--burger__menu__lines__three" />
           </div>
-          <ul className="navbar--items__list">
-            <li className="navbar--items__list__item"><a href="#">Home</a></li>
-            <li className="navbar--items__list__item"><a href="#">Cocktail's recipes</a></li>
-            <li className="navbar--items__list__item"><a href="#">Tools and tips</a></li>
-            <li className="navbar--items__list__item"><a href="#">Who are we ?</a></li>
-          </ul>
+          <div className="navbar--burger__menu__logo">
+            <img src={icon} alt="" />
+          </div>
+          <div className="navbar--burger__menu__items">
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Home</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">about</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">blogs</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">portfolio</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">contact</a></li>
+          </div>
         </div>
       </nav>
     </div>

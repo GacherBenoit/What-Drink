@@ -1,88 +1,129 @@
-.nav{
+
+.navbar {
+  width: 100%;
+  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
   position: fixed;
-  width: 100%;
+
+  &--burger__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    position: relative;
+    display: block;
+    height: 60px;
+
+    &__logo {
+      position: absolute;
+      top: 5px;
+      left: 15px;
+    }
+
+    &__button {
+      text-decoration: none;
+      color: #0e2431;
+      font-weight: 500;
+      font-size: 1.2rem;
+      padding: 0.7rem;
+    }
+
+    &__items {
+      display: flex;
+      padding-top: 120px;
+      box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+      height: 100vh;
+      width: 100vw;
+      transform: translate(-150%);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.5s ease-in-out;
+      text-align: center;
+
+    }
+
+    &__items:hover{
+      font-weight: bolder;
+    }
+
+    &__checkbox {
+      position: absolute;
+      display: block;
+      height: 32px;
+      width: 32px;
+      top: 20px;
+      right: 20px;
+      z-index: 5;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &__link {
+      margin-bottom: 1.2rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      list-style: none;
+    }
+
+    &__lines {
+      display: block;
+      height: 26px;
+      width: 32px;
+      position: absolute;
+      top: 17px;
+      right: 20px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__one {
+        transform-origin: 0% 0%;
+        transition: transform 0.4s ease-in-out;
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #0e2431;
+      }
+      
+      &__two{
+        transition: transform 0.2s ease-in-out;
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #0e2431;
+      }
+      
+      &__three{
+        transform-origin: 0% 100%;
+        transition: transform 0.4s ease-in-out;
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #0e2431;
+      }
+    }
+  }
 }
 
-.navbar--items__list{
-  position: absolute;
-  width: 100%;
-  height: 20em;
-  top: 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  transform: translate(-150%);
-  transition: transform 0.5s ;
 
-  &__item:first-child{
-
-    margin-top: 180px;
-  }
-
-  &__item{
-
-    margin-bottom: 30px;
-  }
-}
-
-.navbar--burger__menu{
-
-  
-
-  &__element{
-
-    background-color: black;
-    position: absolute;
-    
-    right: 12px;
-    width: 35px;
-    height: 4px;
-    border-radius: 5px;
-    z-index: 3;
-  }
-  &__element:nth-child(1){
-
-    top: 12px;
-    transform-origin: 0% 0%;
-    transition: transform 0.4s ease-in-out;
-  }
-  &__element:nth-child(2){
-
-    top: 24px;
-    transition: transform 0.2s ease-in-out;
-    
-  }
-  &__element:nth-child(3){
-
-    top: 36px;
-    transform-origin: 0% 100%;
-    transition: transform 0.4s ease-in-out;
-  }
-  &__button{
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 30px;
-    height: 26px;
-    z-index: 5;
-    opacity: 0;
-  }
-}
-
-input[type="checkbox"]:checked ~ .navbar--items__list{
+.navbar--burger__menu input[type="checkbox"]:checked ~ .navbar--burger__menu__items {
   transform: translateX(0);
-  backdrop-filter: blur(1px)
 }
 
-input[type="checkbox"]:checked ~ .navbar--burger__menu .navbar--burger__menu__element:nth-child(1){
+.navbar--burger__menu input[type="checkbox"]:checked ~ .navbar--burger__menu__lines .navbar--burger__menu__lines__one {
   transform: rotate(45deg);
-  top: 12px;
 }
-input[type="checkbox"]:checked ~ .navbar--burger__menu .navbar--burger__menu__element:nth-child(2) {
+
+.navbar--burger__menu input[type="checkbox"]:checked ~ .navbar--burger__menu__lines .navbar--burger__menu__lines__two {
   transform: scaleY(0);
 }
 
-input[type="checkbox"]:checked ~ .navbar--burger__menu .navbar--burger__menu__element:nth-child(3) {
+.navbar--burger__menu input[type="checkbox"]:checked ~ .navbar--burger__menu__lines .navbar--burger__menu__lines__three {
   transform: rotate(-45deg);
-  top: 35px;
 }
+
+.navbar--burger__menu input[type="checkbox"]:checked ~ .logo{
+  display: none;}
