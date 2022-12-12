@@ -1,0 +1,24 @@
+.navbar--search{
+
+    position: relative;
+
+    &__checkbox{
+
+        position: absolute;
+        width: 38px;
+        height: 53px;
+        right: 61px;
+        z-index: 2;
+        opacity: 0;
+    }
+
+    &__glass__image{
+
+        top: 16px;
+        width: 28px;
+        position: absolute;
+        right: 70px;
+        
+
+    }
+}

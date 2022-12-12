@@ -3,8 +3,11 @@ import './nav.scss';
 
 // Import NPM
 import React from 'react';
-// Import img
+// Import Image
 import icon from '../../assets/icon.png';
+
+// Import Components
+import Search from '../Search/search';
 
 function Nav() {
   return (
@@ -20,6 +23,7 @@ function Nav() {
           <div className="navbar--burger__menu__logo">
             <img src={icon} alt="" />
           </div>
+          <Search />
           <div className="navbar--burger__menu__items">
             <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Home</a></li>
             <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">about</a></li>
