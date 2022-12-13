@@ -19,7 +19,9 @@ function Search() {
       <div className="navbar--search__input">
         <div className="navbar--search__input__items">
           <input className="navbar--search__input__field" type="search" placeholder="Find a recipe..." />
-          <button className="navbar--search__input__button" type="submit">Find</button>
+          <a className="navbar--search__input__items__button" type="submit" label="searchBar" href="#">
+            <img className="navbar--search__input__items__image" src={glass} alt="" />
+          </a>
         </div>
       </div>
     </div>
