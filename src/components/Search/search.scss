@@ -10,15 +10,39 @@
         right: 61px;
         z-index: 2;
         opacity: 0;
+        top: -60px;
+    }
+
+    &__icon{
+
+        top: -44px;
+        position: absolute;
+        right: 70px;
+        
     }
 
     &__glass__image{
 
-        top: 16px;
         width: 28px;
-        position: absolute;
-        right: 70px;
-        
 
     }
+
+    &__input{
+
+        width: 100vw;
+        text-align: center;
+        transform: translate(-150%);
+        transition: transform 0.5s ease-in-out;
+        
+       
+    }
 }
+
+.navbar--search [type="checkbox"]:checked ~ .navbar--search__input {
+   
+    transform: translateX(0);
+    
+}
+.navbar--burger__menu [type="checkbox"]:checked ~ .navbar--search .navbar--search__input {
+    display: none;
+  }
