@@ -1,3 +1,5 @@
+
+
 .navbar--search{
 
     position: relative;
@@ -7,24 +9,27 @@
         position: absolute;
         width: 38px;
         height: 53px;
-        right: 61px;
+        right: 45px;
         z-index: 2;
         opacity: 0;
         top: -60px;
     }
 
-    &__icon{
-
-        top: -44px;
-        position: absolute;
-        right: 70px;
-        
-    }
 
     &__glass__image{
-
+        position: absolute;
+        top: -43px;
         width: 28px;
-
+        transition: opacity 0.3s, transform 0.3s;
+        right: 55px;
+    }
+    &__drink__image{
+        opacity: 0;
+        position: absolute;
+        top: -52px;
+        right: 45px;
+        width: 36px;
+        transition: opacity .3s, transform 0.3s;
     }
 
     &__input{
@@ -33,6 +38,21 @@
         text-align: center;
         transform: translate(-150%);
         transition: transform 0.5s ease-in-out;
+        top: -45px;
+        position: absolute;
+        right: 50px;
+        
+        &__field{
+
+            border-radius: 30px;
+            width: 200px;
+            height: 32px;
+        }
+
+        &__button{
+
+            display: none;
+        }
         
        
     }
@@ -43,6 +63,18 @@
     transform: translateX(0);
     
 }
-.navbar--burger__menu [type="checkbox"]:checked ~ .navbar--search .navbar--search__input {
-    display: none;
-  }
+.navbar--search [type="checkbox"]:checked ~ .navbar--search__icon .navbar--search__glass__image {
+   
+    transition: opacity .3s, transform .3s;
+    transform: rotate(-180deg) scale(.5);
+    opacity: 0;
+    
+}
+.navbar--search [type="checkbox"]:checked ~ .navbar--search__icon .navbar--search__drink__image {
+    
+    transition: opacity .3s, transform .3s;
+    transform: rotate(-360deg) scale(1);
+	opacity: 1;
+    
+}
+

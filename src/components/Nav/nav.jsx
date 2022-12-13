@@ -4,7 +4,8 @@ import './nav.scss';
 // Import NPM
 import React from 'react';
 // Import Image
-import icon from '../../assets/icon.png';
+
+import logo from '../../assets/Logo-01.png';
 
 // Import Components
 import Search from '../Search/search';
@@ -21,7 +22,7 @@ function Nav() {
             <span className="navbar--burger__menu__lines__three" />
           </div>
           <div className="navbar--burger__menu__logo">
-            <img src={icon} alt="" />
+            <img className="navbar--burger__menu__logo__item" src={logo} alt="" />
           </div>
           <div className="navbar--burger__menu__items">
             <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Home</a></li>
