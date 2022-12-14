@@ -46,7 +46,6 @@
       flex-direction: column;
       transition: transform 0.5s ease-in-out;
       text-align: center;
-      z-index: 2;
       position: absolute;
 
     }
@@ -135,4 +134,50 @@
 }
 
 .navbar--burger__menu [type="checkbox"]:checked ~ .navbar--burger__menu__logo{
-  display: none;}
+  display: none;
+}
+
+// Media Queries
+
+
+  @media only screen and (min-width: 900px){
+
+    .navbar {
+      
+      &--search{
+
+        &__checkbox{
+
+          display: none;
+        }
+
+        &__icon{
+
+          display: none;
+        }
+      }
+    
+      &--burger__menu {
+        
+        &__checkbox{
+
+          display: none;
+        }
+        &__lines{
+
+          display: none;
+        }
+
+        &__items{
+
+          transform: translate(0%);
+          height: 20vh;
+          padding: 20px;
+          flex-direction: unset;
+          margin-top: 40px;
+          justify-content: space-evenly;
+
+        }
+     }
+   }
+  }

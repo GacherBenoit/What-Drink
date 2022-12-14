@@ -26,10 +26,10 @@ function Nav() {
           </div>
           <div className="navbar--burger__menu__items">
             <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Home</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">about</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">blogs</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">portfolio</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">contact</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Cocktails recipes</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Tools and tips</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Who are we ?</a></li>
+            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Contact</a></li>
           </div>
         </div>
       </nav>
