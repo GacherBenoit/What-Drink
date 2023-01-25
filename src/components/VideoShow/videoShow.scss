@@ -1,12 +1,23 @@
+@use '../../styles/vars.scss';
+
 .video{
     &--container{
         width: 100%;
-        height: 540px;
+        height: 100vh;
         overflow: hidden;
         display: flex;
         justify-content: center;
+        position: fixed;
+        z-index: -1;
+    
     }
     &--cocktail{
-        margin-left: 10px;
+        /* margin-left: 10px; */
+
+        &__logo{
+            position:absolute ;
+           bottom:  15px;
+            width: 40%;
+        }
     }
 }

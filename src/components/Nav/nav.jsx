@@ -5,7 +5,7 @@ import './nav.scss';
 import React from 'react';
 // Import Image
 
-import logo from '../../assets/Logo-01.png';
+import logo from '../../assets/images/Logo-01.png';
 
 // Import Components
 import Search from '../Search/search';

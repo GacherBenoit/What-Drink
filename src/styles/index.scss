@@ -1,15 +1,10 @@
 @use 'reset';
 @use 'vars';
-@font-face {
-  font-family: "CustomChalkBoy";
-  src: url(../assets/fonts/Chalkboy.ttf);
-}
+
 
 body {
-width: 100vw;
-height: 100vh;
-font-family: "CustomChalkBoy";
-margin: auto;
+font-family: vars.$main-font;
+
 }
 
 #root {

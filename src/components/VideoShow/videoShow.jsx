@@ -11,6 +11,7 @@ function VideoShow() {
   return (
     <div className="video--container">
       <video className="video--cocktail" autoPlay loop muted id="video " src={video} />
+      <a href="##" className="video--cocktail__logo" alt="" />
     </div>
   );
 }

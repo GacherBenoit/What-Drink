@@ -5,8 +5,8 @@ import './search.scss';
 import React from 'react';
 
 // Import image
-import glass from '../../assets/glass.png';
-import icon from '../../assets/icon.png';
+import glass from '../../assets/images/glass.png';
+import icon from '../../assets/images/icon.png';
 
 function Search() {
   return (
