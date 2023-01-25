@@ -1,0 +1,12 @@
+.video{
+    &--container{
+        width: 100%;
+        height: 540px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+    &--cocktail{
+        margin-left: 10px;
+    }
+}
