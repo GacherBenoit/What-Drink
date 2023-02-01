@@ -10,7 +10,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 62px;
     position: relative;
     display: block;
     height: 60px;
@@ -146,21 +145,10 @@
 
     .navbar {
       
-      &--search{
-
-        &__checkbox{
-
-          display: none;
-        }
-
-        &__icon{
-
-          display: none;
-        }
-      }
-    
       &--burger__menu {
-        
+
+        height: 80px;
+
         &__checkbox{
 
           display: none;
@@ -176,10 +164,33 @@
           height: 20vh;
           padding: 20px;
           flex-direction: unset;
-          margin-top: 40px;
-          justify-content: space-evenly;
-
+          justify-content: flex-start;
+          box-shadow: unset;
+          margin-top: 10px;
+        }
+        &__link{
+          margin-left: 25px;
         }
      }
    }
   }
+
+  @media only screen and (min-width: 1400px){
+
+    .navbar--burger__menu{
+    
+    &__items{
+
+      justify-content: center;
+      
+    }
+
+    &__link{
+
+      margin-left: 50px;
+
+    }
+  }
+  }
+
+  

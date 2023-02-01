@@ -4,7 +4,6 @@
 
 body {
 font-family: vars.$main-font;
-
 }
 
 #root {
@@ -17,3 +16,9 @@ font-family: vars.$main-font;
     font-size: 24px;
   }
   }
+
+  @media screen and (min-width: 1400px) {
+    #root {
+      font-size: 36px;
+    }
+    }

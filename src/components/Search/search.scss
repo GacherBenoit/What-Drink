@@ -21,13 +21,13 @@
         top: -43px;
         width: 28px;
         transition: opacity 0.3s, transform 0.3s;
-        right: 55px;
+        right: 60px;
     }
     &__drink__image{
         opacity: 0;
         position: absolute;
         top: -52px;
-        right: 45px;
+        right: 60px;
         width: 36px;
         transition: opacity .3s, transform 0.3s;
     }
@@ -46,7 +46,7 @@
 
             display: flex;
             justify-content: flex-end;
-            margin-right: 65px;
+            margin-right: 84px;
 
             &__button{
 
@@ -102,7 +102,33 @@
         &__input{
 
            transform: translate(0%);
+           top: -55px;
 
+           &__items{
+  
+            justify-content: right;
+            margin-right: 0px;
+          }
+          
            }
+           &__checkbox{
+
+            display: none;
+          }
+  
+          &__icon{
+  
+            display: none;
+          }
+  
+            
         }
+        
     }
+    @media screen and (min-width: 1400px) {
+
+        .navbar--search__input__items__button{
+
+            top: 0;
+        }
+        }

@@ -1,5 +1,5 @@
 // Import CSS
-import './videoShow.scss'
+import './videoShow.scss';
 
 // Import NPM
 import React from 'react';
@@ -7,11 +7,14 @@ import React from 'react';
 // Import video
 import video from '../../assets/video/video-01.mp4';
 
+// Component
+import WelcomeButton from './WelcomeButton/welcomeButton';
+
 function VideoShow() {
   return (
     <div className="video--container">
       <video className="video--cocktail" autoPlay loop muted id="video " src={video} />
-      <a href="##" className="video--cocktail__logo" alt="" />
+      <WelcomeButton />
     </div>
   );
 }

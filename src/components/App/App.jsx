@@ -1,6 +1,6 @@
 // Import CSS
 import './App.scss';
-
+import '../../styles/index.scss';
 // Import NPM
 import React from 'react';
 
