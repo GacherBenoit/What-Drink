@@ -1,5 +1,6 @@
 // Import CSS
 import './mainArticle.scss';
+import '../linkButton/linkButton.scss';
 
 // Import NPM
 import React from 'react';
@@ -12,11 +13,12 @@ import Data from '../../data/presentationData';
 
 function MainArticle() {
   return (
-    <section className="mainArticle">
-      <h1 className="mainArticle--title">
+    <section className="main--Article">
+      <h1 className="main--Article__title">
         Titre
       </h1>
-      <p className="mainArticle--article">Content of the article</p>
+      <p className="main--article-__article">Content of the article</p>
+      <LinkButton buttonClassname="main--article__button" linkClassname="main--article__link" />
     </section>
   );
 }
