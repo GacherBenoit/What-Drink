@@ -19,7 +19,7 @@ function MainArticle() {
           <h1 className="main--article__title">
             {article.title}
           </h1>
-          <p className="main--article-__article">{article.content}</p>
+          <p className="main--article__paragraph">{article.content}</p>
           <LinkButton buttonClassname="main--article__button" linkClassname="main--article__link" />
         </section>
       ))}
