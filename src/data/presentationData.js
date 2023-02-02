@@ -13,7 +13,7 @@ const article = [
   },
   {
     id: 3,
-    title: 'TWho we are',
+    title: 'Who we are',
     content: 'You can find below more details on all the technologies used as well as our research and development process in order to offer you this summary of knowledge.',
     section: 'Know more',
   }];

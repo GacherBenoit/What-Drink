@@ -15,8 +15,8 @@ function MainArticle() {
   return (
     <div className="articles">
       {Data.map((article) => (
-        <section key={article.id} className="main--Article">
-          <h1 className="main--Article__title">
+        <section key={article.id} className="main--article">
+          <h1 className="main--article__title">
             {article.title}
           </h1>
           <p className="main--article-__article">{article.content}</p>

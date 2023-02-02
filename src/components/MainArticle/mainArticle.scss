@@ -1,8 +1,10 @@
 @use '../../styles/vars.scss';
 
+.article{
+    height: 100vh;
+}
 .main--article{
 
-    height: 100vh;
     padding-top: 2rem;
 
     &__title{
