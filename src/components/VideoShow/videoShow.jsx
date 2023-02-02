@@ -8,7 +8,7 @@ import React from 'react';
 import video from '../../assets/video/video-01.mp4';
 
 // Component
-import WelcomeButton from './WelcomeButton/welcomeButton';
+import WelcomeButton from '../WelcomeButton/welcomeButton';
 
 function VideoShow() {
   return (

@@ -1,10 +1,10 @@
 // Import CSS
-import './welcomeButton.scss';
+import './linkButton.scss';
 
 // Import NPM
 import React from 'react';
 
-function WelcomeButton() {
+function LinkButton() {
   return (
     <button className="welcomeButton">
       <a href="#" id="welcomeLink">What Drink</a>
@@ -12,4 +12,4 @@ function WelcomeButton() {
   );
 }
 
-export default WelcomeButton;
+export default LinkButton;
