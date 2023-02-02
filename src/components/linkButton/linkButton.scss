@@ -6,7 +6,7 @@
     position: absolute;
     top: 75%;
     z-index: -1;
-    @include vars.button-style
+    @include vars.button-style(30px,12px,29px)
 }
 
 .welcomeButton:hover{    
@@ -16,7 +16,7 @@
     position: inherit;
 } */
 .main--article__button{
-    @include vars.button-style
+    @include vars.button-style(18px,12px,20px)
 }
 
 .main--article__button:hover{
