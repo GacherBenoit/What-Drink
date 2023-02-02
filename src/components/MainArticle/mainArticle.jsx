@@ -1,6 +1,5 @@
 // Import CSS
 import './mainArticle.scss';
-import '../linkButton/linkButton.scss';
 
 // Import NPM
 import React from 'react';

@@ -1,0 +1,6 @@
+@use '../../styles/vars.scss';
+
+.articles{
+
+    @include vars.articles-background;
+}
