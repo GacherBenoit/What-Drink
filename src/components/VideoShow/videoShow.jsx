@@ -5,16 +5,16 @@ import './videoShow.scss';
 import React from 'react';
 
 // Import video
-import video from '../../assets/video/video-01.mp4';
+import video from '../../assets/video/video-01.mp4';// Import NPM
 
 // Component
-import WelcomeButton from '../WelcomeButton/welcomeButton';
+import LinkButton from '../linkButton/linkButton';
 
 function VideoShow() {
   return (
     <div className="video--container">
       <video className="video--cocktail" autoPlay loop muted id="video " src={video} />
-      <WelcomeButton />
+      <LinkButton buttonClassname="welcomeButton" linkClassname="welcomeLink" />
     </div>
   );
 }

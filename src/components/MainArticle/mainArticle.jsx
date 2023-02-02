@@ -5,7 +5,7 @@ import './mainArticle.scss';
 import React from 'react';
 
 // import Component
-import LinkButton from '../WelcomeButton/linkButton';
+import LinkButton from '../linkButton/linkButton';
 
 // Import Data
 import Data from '../../data/presentationData';
@@ -17,7 +17,6 @@ function MainArticle() {
         Titre
       </h1>
       <p className="mainArticle--article">Content of the article</p>
-      <LinkButton />
     </section>
   );
 }

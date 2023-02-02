@@ -1,6 +1,7 @@
 @use '../../styles/vars.scss';
 
 
+// Button style position
 .welcomeButton{
     position: absolute;
     top: 75%;
@@ -18,18 +19,22 @@
     z-index: -1;
 }
 
+.welcomeButton:hover{    
+    background:linear-gradient(to bottom, orange 5%, #ffec64 100%);
+
 .welcomeLink{
     position: inherit;
    
 }
 
-  .welcomeButton:hover{    
-    background:linear-gradient(to bottom, orange 5%, #ffec64 100%);
-
-}
 @media only screen and (min-width: 900px){
 
     .welcomeButton{
         z-index: 0;
     }
    }
+
+
+
+
+}
