@@ -13,13 +13,17 @@ import Data from '../../data/presentationData';
 
 function MainArticle() {
   return (
-    <section className="main--Article">
-      <h1 className="main--Article__title">
-        Titre
-      </h1>
-      <p className="main--article-__article">Content of the article</p>
-      <LinkButton buttonClassname="main--article__button" linkClassname="main--article__link" />
-    </section>
+    <div className="articles">
+      {Data.map((article) => (
+        <section key={article.id} className="main--Article">
+          <h1 className="main--Article__title">
+            {article.title}
+          </h1>
+          <p className="main--article-__article">{article.content}</p>
+          <LinkButton buttonClassname="main--article__button" linkClassname="main--article__link" />
+        </section>
+      ))}
+    </div>
   );
 }
 export default MainArticle;

@@ -1,2 +1,12 @@
 @use '../../styles/vars.scss';
 
+.main--article{
+
+    height: 100vh;
+    padding-top: 2rem;
+
+    &__title{
+        font-size: 3rem;
+        text-align: center;
+    }
+}
