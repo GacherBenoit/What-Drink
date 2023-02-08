@@ -20,7 +20,7 @@ $nav-color: orange;
   text-decoration: none;
   text-shadow: 0px -1px 0px #ffee66;}
 
-@mixin articles-background{
+@mixin welcome-article--background{
     // https://angrytools.com/gradient/
     /* ff 3.6+ */
     background:-moz-linear-gradient(180deg, rgba(255, 193, 7, 1) 0%, rgba(210, 183, 65, 1) 50%, rgba(217, 127, 76, 1) 100%); 
@@ -39,6 +39,46 @@ $nav-color: orange;
 
     /* global 94%+ browsers support */
     background:linear-gradient(180deg, rgba(255, 193, 7, 1) 0%, rgba(210, 183, 65, 1) 50%, rgba(217, 127, 76, 1) 100%);
+  }
 
+  @mixin tools--and--tips--article-background{
+     /* ff 3.6+ */
+     background:-moz-linear-gradient(180deg, rgba(255, 177, 0, 1) 0%, rgba(207, 191, 0, 1) 50%, rgba(238, 236, 130, 1) 100%); 
+
+     /* safari 5.1+,chrome 10+ */
+     background:-webkit-linear-gradient(180deg, rgba(255, 177, 0, 1) 0%, rgba(207, 191, 0, 1) 50%, rgba(238, 236, 130, 1) 100%);
+ 
+     /* opera 11.10+ */
+     background:-o-linear-gradient(180deg, rgba(255, 177, 0, 1) 0%, rgba(207, 191, 0, 1) 50%, rgba(238, 236, 130, 1) 100%);
+ 
+     /* ie 6-9 */
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEEC82', endColorstr='#FFB100', GradientType=1 );
+ 
+     /* ie 10+ */
+     background:-ms-linear-gradient(180deg, rgba(255, 177, 0, 1) 0%, rgba(207, 191, 0, 1) 50%, rgba(238, 236, 130, 1) 100%);
+ 
+     /* global 94%+ browsers support */
+     background:linear-gradient(180deg, rgba(255, 177, 0, 1) 0%, rgba(207, 191, 0, 1) 50%, rgba(238, 236, 130, 1) 100%);
+
+}
+
+@mixin who--we--are-article-background{
+  /* ff 3.6+ */
+  background:-moz-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%); 
+
+  /* safari 5.1+,chrome 10+ */
+  background:-webkit-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
+
+  /* opera 11.10+ */
+  background:-o-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ECEE82', endColorstr='#FF0086', GradientType=1 );
+
+  /* ie 10+ */
+  background:-ms-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
+
+  /* global 94%+ browsers support */
+  background:linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
 
 }

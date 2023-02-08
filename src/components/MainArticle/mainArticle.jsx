@@ -14,12 +14,13 @@ function MainArticle() {
   return (
     <div className="articles">
       {Data.map((article) => (
-        <section key={article.id} className="main--article">
+        <section key={article.id} className={`main--article ${article.label}--article`}>
           <h1 className="main--article__title">
             {article.title}
           </h1>
           <p className="main--article__paragraph">{article.content}</p>
           <LinkButton buttonClassname="main--article__button" linkClassname="main--article__link" labelName={article.section} />
+          <img className="main--article__image" src={`/src/assets/images/${article.picture}.jpg`} alt="" />
         </section>
       ))}
     </div>
