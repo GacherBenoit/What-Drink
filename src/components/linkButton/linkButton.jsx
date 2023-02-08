@@ -7,10 +7,10 @@ import React from 'react';
 // Import NPM
 import { PropTypes } from 'prop-types';
 
-function LinkButton({ buttonClassname, linkClassname }) {
+function LinkButton({ buttonClassname, linkClassname, labelName }) {
   return (
     <button className={buttonClassname}>
-      <a href="#" className={linkClassname}>What Drink</a>
+      <a href="#" className={linkClassname}>{labelName}</a>
     </button>
   );
 }
@@ -18,6 +18,7 @@ function LinkButton({ buttonClassname, linkClassname }) {
 LinkButton.propTypes = {
   buttonClassname: PropTypes.string.isRequired,
   linkClassname: PropTypes.string.isRequired,
+  labelName: PropTypes.string.isRequired,
 };
 
 export default LinkButton;

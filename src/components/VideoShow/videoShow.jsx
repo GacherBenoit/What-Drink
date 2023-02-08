@@ -8,13 +8,13 @@ import React from 'react';
 import video from '../../assets/video/video-01.mp4';// Import NPM
 
 // Component
-import LinkButton from '../linkButton/linkButton';
+import LinkButton from '../LinkButton/linkButton';
 
 function VideoShow() {
   return (
     <div className="video--container">
       <video className="video--cocktail" autoPlay loop muted id="video " src={video} />
-      <LinkButton buttonClassname="welcomeButton" linkClassname="welcomeLink" />
+      <LinkButton buttonClassname="welcomeButton" linkClassname="welcomeLink" labelName="Welcome" />
     </div>
   );
 }
