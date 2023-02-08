@@ -20,7 +20,9 @@ function MainArticle() {
           </h1>
           <p className="main--article__paragraph">{article.content}</p>
           <LinkButton buttonClassname="main--article__button" linkClassname="main--article__link" labelName={article.section} />
-          <img className="main--article__image" src={`/src/assets/images/${article.picture}.jpg`} alt="" />
+          <div className="main--article__image">
+            <img className="main--article__image__item" src={`/src/assets/images/${article.picture}.jpg`} alt="" />
+          </div>
         </section>
       ))}
     </div>
