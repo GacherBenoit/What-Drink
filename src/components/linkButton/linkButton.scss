@@ -12,9 +12,7 @@
 .welcomeButton:hover{    
     background:linear-gradient(to bottom, orange 5%, #ffec64 100%);
 }
-/* .welcomeLink{
-    position: inherit;
-} */
+
 .main--article__button{
     @include vars.button-style(18px,12px,20px);
     display: block;

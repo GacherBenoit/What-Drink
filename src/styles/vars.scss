@@ -63,22 +63,22 @@ $nav-color: orange;
 }
 
 @mixin who--we--are-article-background{
-  /* ff 3.6+ */
-  background:-moz-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%); 
+ /* ff 3.6+ */
+ background:-moz-linear-gradient(180deg, rgba(255, 190, 0, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%); 
 
-  /* safari 5.1+,chrome 10+ */
-  background:-webkit-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
+ /* safari 5.1+,chrome 10+ */
+ background:-webkit-linear-gradient(180deg, rgba(255, 190, 0, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
 
-  /* opera 11.10+ */
-  background:-o-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
+ /* opera 11.10+ */
+ background:-o-linear-gradient(180deg, rgba(255, 190, 0, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
 
-  /* ie 6-9 */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ECEE82', endColorstr='#FF0086', GradientType=1 );
+ /* ie 6-9 */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ECEE82', endColorstr='#FFBE00', GradientType=1 );
 
-  /* ie 10+ */
-  background:-ms-linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
+ /* ie 10+ */
+ background:-ms-linear-gradient(180deg, rgba(255, 190, 0, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
 
-  /* global 94%+ browsers support */
-  background:linear-gradient(180deg, rgba(255, 0, 134, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
+ /* global 94%+ browsers support */
+ background:linear-gradient(180deg, rgba(255, 190, 0, 1) 0%, rgba(207, 165, 0, 1) 50%, rgba(236, 238, 130, 1) 100%);
 
 }
