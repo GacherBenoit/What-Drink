@@ -18,5 +18,6 @@ function VideoShow() {
     </div>
   );
 }
-
+// HashLink or how scroll to id element with react-router
+// https://www.freecodecamp.org/news/how-to-implement-vertical-scrolling-in-react-using-react-router-hash-link/
 export default VideoShow;

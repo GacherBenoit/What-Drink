@@ -2,7 +2,7 @@
 import './nav.scss';
 
 // Import NPM
-import React from 'react';
+import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 
 // Import Image
@@ -29,7 +29,7 @@ function Nav() {
           <div className="navbar--burger__menu__items">
             <li className="navbar--burger__menu__link "><NavLink className="navbar--burger__menu__link__button" to="/">Home</NavLink></li>
             <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="tools&tips">Tools and tip</NavLink></li>
-            <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="who-we-are">Who are we ?</NavLink></li>
+            <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="/whoWeAre">Who are we ?</NavLink></li>
           </div>
         </div>
       </nav>
