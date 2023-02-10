@@ -3,6 +3,7 @@ import './App.scss';
 import '../../styles/index.scss';
 // Import NPM
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 // Import Components
 import Nav from '../Nav/nav';
@@ -13,7 +14,9 @@ function App() {
   return (
     <div className="app">
       <Nav />
-      <Main />
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
       <Footer />
     </div>
   );
