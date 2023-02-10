@@ -2,10 +2,12 @@
 import './nav.scss';
 
 // Import NPM
-import React from 'react';
+import React, {useState} from 'react';
+import { NavLink } from 'react-router-dom';
+
 // Import Image
 
-import logo from '../../assets/Logo-01.png';
+import logo from '../../assets/images/Logo-01.png';
 
 // Import Components
 import Search from '../Search/search';
@@ -25,11 +27,9 @@ function Nav() {
             <img className="navbar--burger__menu__logo__item" src={logo} alt="" />
           </div>
           <div className="navbar--burger__menu__items">
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Home</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Cocktails recipes</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Tools and tips</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Who are we ?</a></li>
-            <li className="navbar--burger__menu__link"><a href="#" className="navbar--burger__menu__link__button">Contact</a></li>
+            <li className="navbar--burger__menu__link "><NavLink className="navbar--burger__menu__link__button" to="/">Home</NavLink></li>
+            <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="tools&tips">Tools and tip</NavLink></li>
+            <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="/whoWeAre">Who are we ?</NavLink></li>
           </div>
         </div>
       </nav>

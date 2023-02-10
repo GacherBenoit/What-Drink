@@ -1,0 +1,85 @@
+@use '../../styles/vars.scss';
+
+.main--article{
+
+    height: 100vh;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &__title{
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    &__paragraph{
+        margin-bottom: 5rem;
+        text-align: center;
+    }
+    &__image{
+
+        padding: 0.5rem 0.5rem;
+        display: flex;
+        border: 3px solid #333333;
+        font-size: 2.5rem;
+        border-radius: 2% 6% 5% 4%/1% 1% 2% 4%;
+        text-transform: uppercase;
+        letter-spacing: 0.3ch;
+        background: #ffffff;
+        position: relative;
+        max-height: 406px;
+        max-width: 90%;
+        margin-top: 5rem;
+        margin-left: auto;
+        margin-right: auto;
+      
+        &::before {
+            content: "";
+            border: 2px solid #353535;
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0) scale(1.050) rotate(2deg);
+            border-radius: 1% 1% 2% 4%/2% 6% 5% 4%;
+        }
+        &::after{
+            content: "";
+            border: 2px solid #353535;
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0) scale(1.058) rotate(5deg);
+            border-radius: 1% 1% 2% 4%/2% 6% 5% 4%;
+        }
+
+        &__item{
+            border-radius: 2% 6% 5% 4%/1% 1% 2% 4%;
+            max-width: 100%;
+        }
+        
+    }
+
+}
+
+.welcome--article{
+
+    @include vars.welcome-article--background;
+}
+
+.tools--and--tips--article{
+
+    @include vars.tools--and--tips--article-background;
+
+}
+
+.who--we--are--article{
+
+    @include vars.who--we--are-article-background;
+}

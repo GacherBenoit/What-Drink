@@ -4,10 +4,15 @@ import './main.scss';
 // Import NPM
 import React from 'react';
 
+// components
+import VideoShow from '../VideoShow/videoShow';
+import MainArticle from '../MainArticle/mainArticle';
+
 function Main() {
   return (
     <div className="main">
-      <h3>Main</h3>
+      <VideoShow />
+      <MainArticle />
     </div>
   );
 }
