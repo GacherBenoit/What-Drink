@@ -11,6 +11,7 @@ import Main from '../Main/main';
 import Footer from '../Footer/footer';
 import ToolsAndTips from '../ToolsAndTips/toolsAndTips';
 import WhoWeAre from '../WhoWeAre/whoWeAre';
+import Cocktails from '../Cocktails/cocktail';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/cocktails" element={<Cocktails />} />
         <Route path="/tools&tips" element={<ToolsAndTips />} />
         <Route path="/whoWeAre" element={<WhoWeAre />} />
       </Routes>

@@ -14,7 +14,7 @@ function VideoShow() {
   return (
     <div className="video--container">
       <video className="video--cocktail" autoPlay loop muted id="video " src={video} />
-      <LinkButton buttonClassname="welcomeButton" linkClassname="welcomeLink" labelName="Welcome" />
+      <LinkButton link="#welcome" buttonClassname="welcomeButton" linkClassname="welcomeLink" labelName="Welcome" />
     </div>
   );
 }

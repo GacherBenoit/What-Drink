@@ -27,7 +27,7 @@ function Nav() {
             <img className="navbar--burger__menu__logo__item" src={logo} alt="" />
           </div>
           <div className="navbar--burger__menu__items">
-            <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="/">Home</NavLink></li>
+            <li className="navbar--burger__menu__link "><NavLink className="navbar--burger__menu__link__button" to="/">Home</NavLink></li>
             <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="tools&tips">Tools and tip</NavLink></li>
             <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="who-we-are">Who are we ?</NavLink></li>
           </div>
