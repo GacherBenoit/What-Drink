@@ -3,7 +3,7 @@ import './App.scss';
 import '../../styles/index.scss';
 // Import NPM
 import React from 'react';
-import { Routes , Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // Import Components
 import Nav from '../Nav/nav';

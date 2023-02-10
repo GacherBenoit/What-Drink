@@ -6,7 +6,7 @@ import React from 'react';
 
 function WhoWeAre() {
   return (
-    <h1>Tools and Tips </h1>
+    <h1>Who we Are </h1>
   );
 }
 
