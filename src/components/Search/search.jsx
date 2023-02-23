@@ -3,12 +3,23 @@ import './search.scss';
 
 // Import NPM
 import React from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // Import image
 import glass from '../../assets/images/glass.png';
 import icon from '../../assets/images/icon.png';
+// Base URL
 
 function Search() {
+  const [recipes,setReciptes] = useState([]);
+
+  useEffect(() => {
+    axios.get('https:/www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin').then((response) => {
+      setReciptes(response.data);
+    });
+  }, []);
+
   return (
     <div className="navbar--search">
       <input className="navbar--search__checkbox" type="checkbox" />
