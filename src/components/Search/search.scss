@@ -94,7 +94,14 @@
 
 // Media Queries
 
+@media only screen and (min-width: 768px){
 
+    .navbar--search__input__field{
+
+        width: 400px;
+    }
+
+}
 @media only screen and (min-width: 900px){
 
     .navbar--search{
@@ -102,11 +109,11 @@
         &__input{
 
            transform: translate(0%);
-           top: -55px;
+           top: -45px;
 
            &__items{
   
-            justify-content: right;
+            justify-content: center;
             margin-right: 0px;
           }
           

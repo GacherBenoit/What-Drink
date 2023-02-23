@@ -178,15 +178,25 @@
 
 // Media Queries
 
+@media screen and (min-width: 420px) {
+
+  .navbar--burger__menu__logo{
+ 
+   display: inherit;
+ 
+  }
+     
+ }
+
   @media only screen and (min-width: 900px){
 
     .navbar {
       
       &--burger__menu {
 
-        height: 80px;
+        height: 110px;
 
-        &__checkbox{
+        &__button{
 
           display: none;
         }
@@ -201,9 +211,21 @@
           height: 20vh;
           padding: 20px;
           flex-direction: unset;
-          justify-content: flex-start;
+          justify-content: space-evenly;
           box-shadow: unset;
           margin-top: 10px;
+
+          &__open{
+
+            transform: translate(0%);
+            height: 20vh;
+            padding: 20px;
+            flex-direction: unset;
+            justify-content: space-evenly;
+            box-shadow: unset;
+            margin-top: 10px;
+            
+            }
         }
         &__link{
           margin-left: 25px;
@@ -212,15 +234,7 @@
    }
   }
 
-  @media screen and (min-width: 420px) {
 
- .navbar--burger__menu__logo{
-
-  display: inherit;
-
- }
-    
-  }
   @media only screen and (min-width: 1400px){
 
     .navbar--burger__menu{
