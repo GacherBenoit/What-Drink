@@ -205,6 +205,20 @@
           display: none;
         }
 
+        &__logo{
+
+          position: absolute;
+          top: -19px;
+          left: 14px;
+          z-index: 2;
+          
+          &__item{
+
+            width: 130px;
+            height: 130px;
+          }
+        }
+
         &__items{
   
           transform: translate(0%);

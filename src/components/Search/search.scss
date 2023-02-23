@@ -65,9 +65,10 @@
         
         &__field{
 
-            border-radius: 30px;
+            border-radius: 11px;
             width: 200px;
             height: 32px;
+            border: solid 2px white;
         }
         
        
@@ -117,6 +118,25 @@
   
             justify-content: center;
             margin-right: 0px;
+
+            &__button{
+
+                position: relative;
+                right: 73px;
+                top: 1px;
+                background-color: orange;
+                height: 30px;
+                border-radius: 9px;
+                width: 72px;
+                border: solid 2px white;
+            }
+            &__image{
+
+                width: 23px;
+                position: relative;
+                top: 2px;
+                right: 1px;
+            }
           }
           
            }
