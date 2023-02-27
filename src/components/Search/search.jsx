@@ -2,8 +2,7 @@
 import './search.scss';
 
 // Import NPM
-import React from 'react';
-import { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Import image
@@ -13,13 +12,15 @@ import icon from '../../assets/images/icon.png';
 const baseURL = 'https:/www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 
 function Search() {
-  const [search,SetSearch] = useState('');
-  const [recipes,setReciptes] = useState([]);
+  const [search, SetSearch] = useState('');
+  const [recipes, setReciptes] = useState([]);
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
+      console.log(response.data);
       setReciptes(response.data);
-    });
+    })
+      .catch((err) => {console.log(err)});
   }, []);
 
   return (
@@ -35,6 +36,9 @@ function Search() {
           <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#">
             <img className="navbar--search__input__items__image" src={glass} alt="" />
           </button>
+          <ul>
+      
+          </ul>
         </div>
       </div>
     </div>
