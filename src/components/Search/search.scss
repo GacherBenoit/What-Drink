@@ -49,16 +49,18 @@
             left: 15px;
 
                 &__list{
-
-                top: -20px;
+              
                 background-color: white;
-                z-index: -1;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
-                padding-top: 12px;
+                font-size: 0.9em;
                 margin-top: -8px;
-                }
             
+                &__element:first-child{
+
+                    padding-top: 22px;
+                }
+            }
 
             &__button{
 
@@ -108,6 +110,10 @@
 	opacity: 1;
     
 }
+// When the user select a suggestion in the search bar , the fiels is not focus. So we set opacity to 0 to hide the list of suggestion.
+.navbar--search__input__field:not(:focus) ~ .navbar--search__input__items__list{
+     opacity: 0;
+ }
 
 // Media Queries
 

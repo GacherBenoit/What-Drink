@@ -56,7 +56,8 @@ function Search() {
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
               .map((recipe) => (
                 <option
-                // Need to use anonym function to dont enter in a re-render loop
+                  className="navbar--search__input__items__list__element"
+                // Need to use anonym function to dont enter in a re-render loop.
                   onClick={
                   () => (SetSearch(recipe.strDrink))
                 }
@@ -64,7 +65,7 @@ function Search() {
                 >
                   {recipe.strDrink}
                 </option>
-))}
+              ))}
           </ul>
         </div>
       </div>
