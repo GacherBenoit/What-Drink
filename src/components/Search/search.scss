@@ -40,18 +40,30 @@
         transition: transform 0.5s ease-in-out;
         position: relative;
         top: -45px;
-        right: 0px;
 
         &__items{
 
-            display: flex;
-            justify-content: flex-end;
-            margin-right: 84px;
+               
+            max-width: min-content;
+            position: relative;
+            left: 15px;
+
+                &__list{
+
+                top: -20px;
+                background-color: white;
+                z-index: -1;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                padding-top: 12px;
+                margin-top: -8px;
+                }
+            
 
             &__button{
 
-                position: relative;
-                right: 29px;
+                position: absolute;
+                right: 8px;
                 top: 5px;
                 background-color: white;
                 height: 25px;
@@ -69,6 +81,8 @@
             width: 200px;
             height: 32px;
             border: solid 2px white;
+            position: relative;
+            
         }
         
        
@@ -97,12 +111,22 @@
 
 // Media Queries
 
+@media screen and (min-width: 420px) {
+
+    .navbar--search__input{
+   
+     display: flex;
+     justify-content: center;
+   
+    }
+}
 @media only screen and (min-width: 768px){
 
     .navbar--search__input__field{
 
         width: 400px;
     }
+
 
 }
 @media only screen and (min-width: 900px){
@@ -121,14 +145,14 @@
 
             &__button{
 
-                position: relative;
-                right: 73px;
-                top: 1px;
+                position: absolute;
+                right: 1px;
                 background-color: orange;
                 height: 30px;
                 border-radius: 9px;
                 width: 72px;
                 border: solid 2px white;
+                top: 1px;
             }
             &__image{
 

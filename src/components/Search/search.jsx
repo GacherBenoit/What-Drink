@@ -19,7 +19,7 @@ function Search() {
 
   useEffect(() => {
     axios.get(baseUrlforCocktailCategory).then((response) => {
-     console.log(response.data);
+    //  console.log(response.data);
       setRecipes(response.data.drinks);
     })
       .catch((err) => console.log(err));
@@ -34,18 +34,37 @@ function Search() {
       </div>
       <div className="navbar--search__input">
         <div className="navbar--search__input__items">
-          <input className="navbar--search__input__field" type="texte" placeholder="Find a recipe..." value={search} onChange={(evt) => SetSearch(evt.target.value.charAt(0).toUpperCase() + evt.target.value.slice(1).toLowerCase())} />
+          <input
+            className="navbar--search__input__field"
+            type="texte"
+            placeholder="Find a recipe..."
+            value={search}
+            onChange={(evt) => SetSearch(evt.target.value.charAt(0).toUpperCase()
+            + evt.target.value.slice(1).toLowerCase())}
+          />
           {/* OnChange we set the state and select the first letter (with .charAt) to transform it
           in upperCase (with .toUppercase).Finally concatain with a copy of the field value
            only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react */}
+
           <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#">
             <img className="navbar--search__input__items__image" src={glass} alt="" />
           </button>
-          <ul>
-            {/* If search input isnt empty and recipes isn empty too (to recieve data from API)
-           , the filter function is functionnal */}
+          <ul className="navbar--search__input__items__list">
+
+            {/* If search input isnt empty and recipes(data from API) isnt empty too
+             (to recieve data from API) ,the filter function is functionnal */}
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
-              .map((recipe) => <li key={recipe.idDrink}>{recipe.strDrink}</li>)}
+              .map((recipe) => (
+                <option
+                // Need to use anonym function to dont enter in a re-render loop
+                  onClick={
+                  () => (SetSearch(recipe.strDrink))
+                }
+                  key={recipe.idDrink}
+                >
+                  {recipe.strDrink}
+                </option>
+))}
           </ul>
         </div>
       </div>
