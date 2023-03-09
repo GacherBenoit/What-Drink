@@ -41,16 +41,19 @@ function Search() {
       const listElement = document.getElementsByClassName('navbar--search__input__items__list__element'); // Je crée un tableau avec tte les classes
       listElement[navigationPosition.current].classList.add('highLight'); // J'ajoute la classe classLight au premier element
       const elementToRemove = document.getElementsByClassName('highLight');
-      navigationPosition.current += 1;
+
+      if (listElement) {
+        navigationPosition.current += 1; }
 
       if (elementToRemove.length === 2)
-      { elementToRemove[0].classList.remove('highLight');
-      }
+      { elementToRemove[0].classList.remove('highLight'); }
 
       if (navigationPosition.current === listElement.length) {
         navigationPosition.current -= listElement.length;
         console.log(navigationPosition.current);
       }
+      if (navigationPosition.current === 0) 
+      { elementToRemove[0].classList.remove('highLight'); }
     }
   };
 
