@@ -8,6 +8,7 @@ import axios from 'axios';
 // Import image
 import glass from '../../assets/images/glass.png';
 import icon from '../../assets/images/icon.png';
+import { element } from 'prop-types';
 
 function Search() {
   const [search, SetSearch] = useState('');
@@ -36,24 +37,24 @@ function Search() {
   };
 
   const keyboardNavigation = (event) => {
-    if (search && search && event.key === 'ArrowDown') {
-      console.log('1ere condition exécuté');
+    if (search && search) {
       const listElement = document.getElementsByClassName('navbar--search__input__items__list__element'); // Je crée un tableau avec tte les classes
-      listElement[navigationPosition.current].classList.add('highLight'); // J'ajoute la classe classLight au premier element
       const elementToRemove = document.getElementsByClassName('highLight');
 
-      if (listElement) {
-        navigationPosition.current += 1; }
-
-      if (elementToRemove.length === 2)
-      { elementToRemove[0].classList.remove('highLight'); }
-
       if (navigationPosition.current === listElement.length) {
-        navigationPosition.current -= listElement.length;
+        navigationPosition.current = 0;
+        elementToRemove[0].classList.remove('highLight')
         console.log(navigationPosition.current);
       }
-      if (navigationPosition.current === 0) 
-      { elementToRemove[0].classList.remove('highLight'); }
+      if (event.key === 'ArrowDown') {
+        listElement[navigationPosition.current].classList.add('highLight');
+        navigationPosition.current += 1;
+        console.log(navigationPosition.current);
+
+        if (elementToRemove.length === 2) {
+          elementToRemove[0].classList.remove('highLight');
+        }
+      }
     }
   };
 
