@@ -12,6 +12,8 @@ import icon from '../../assets/images/icon.png';
 function Search() {
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
+  const navigationPosition = { current: 0 };
+  // const navigationPosition = { current: 0, previous: function() { navigationPosition.current -= 1; } };
 
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
@@ -24,6 +26,33 @@ function Search() {
     })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleSearchInput = (evt) => {
+    SetSearch(evt.target.value.charAt(0).toUpperCase()
+            + evt.target.value.slice(1).toLowerCase());
+  // OnChange we set the state and select the first letter (with .charAt) to transform it
+  // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
+  // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
+  };
+
+  const keyboardNavigation = (event) => {
+    if (search && search && event.key === 'ArrowDown') {
+      console.log('1ere condition exécuté');
+      const listElement = document.getElementsByClassName('navbar--search__input__items__list__element'); // Je crée un tableau avec tte les classes
+      listElement[navigationPosition.current].classList.add('highLight'); // J'ajoute la classe classLight au premier element
+      const elementToRemove = document.getElementsByClassName('highLight');
+      navigationPosition.current += 1;
+
+      if (elementToRemove.length === 2)
+      { elementToRemove[0].classList.remove('highLight');
+      }
+
+      if (navigationPosition.current === listElement.length) {
+        navigationPosition.current -= listElement.length;
+        console.log(navigationPosition.current);
+      }
+    }
+  };
 
   return (
     <div className="navbar--search">
@@ -39,13 +68,9 @@ function Search() {
             type="texte"
             placeholder="Find a recipe..."
             value={search}
-            onChange={(evt) => SetSearch(evt.target.value.charAt(0).toUpperCase()
-            + evt.target.value.slice(1).toLowerCase())}
+            onChange={(evt) => handleSearchInput(evt)}
+            onKeyDown={(evt) => keyboardNavigation(evt)}
           />
-          {/* OnChange we set the state and select the first letter (with .charAt) to transform it
-          in upperCase (with .toUppercase).Finally concatain with a copy of the field value
-           only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react */}
-
           <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#">
             <img className="navbar--search__input__items__image" src={glass} alt="" />
           </button>

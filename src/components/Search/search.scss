@@ -91,6 +91,10 @@
     }
 }
 
+.highLight{
+    background-color:rgb(82, 82, 211);
+}
+
 .navbar--search [type="checkbox"]:checked ~ .navbar--search__input {
    
     transform: translateX(0);
