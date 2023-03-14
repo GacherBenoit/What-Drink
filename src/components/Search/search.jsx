@@ -14,7 +14,7 @@ function Search() {
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
   const navigationPosition = { current: -1 }; 
-  // Important to start at -1. We need a position egal to the index of the table.The properties will be increment at every key push.
+  // Important to start at -1. We need a position equal to the index of the table.The properties will be increment at every key push.
   // Here ,we start at -1 and the first incrementation qwe will start at 0 , the first entry of the table.
 
   // Base URL for search by cocktail category because
@@ -42,18 +42,38 @@ function Search() {
       const listElement = document.getElementsByClassName('navbar--search__input__items__list__element'); // Je crée un tableau avec tte les classes
       const elementToRemove = document.getElementsByClassName('highLight');
 
-      if (navigationPosition.current === listElement.length - 1) {
-        navigationPosition.current = -1;
-        elementToRemove[0].classList.remove('highLight');
-        console.log(navigationPosition.current);
-      }
       if (event.key === 'ArrowDown') {
+        if (navigationPosition.current === listElement.length - 1) {
+          navigationPosition.current = -1;
+          elementToRemove[0].classList.remove('highLight');
+          console.log(navigationPosition.current);
+        }
         navigationPosition.current += 1;
         listElement[navigationPosition.current].classList.add('highLight');
         console.log(navigationPosition.current);
 
         if (elementToRemove.length === 2) {
           elementToRemove[0].classList.remove('highLight');
+        }
+      }
+      if (event.key === 'ArrowUp') {
+        if (navigationPosition.current === -1) {
+          navigationPosition.current = listElement.length;
+          console.log(listElement);
+        }
+        if (navigationPosition.current === 0) {
+          navigationPosition.current = listElement.length;
+          elementToRemove[0].classList.remove('highLight');
+          console.log(listElement);
+        }
+
+        console.log(navigationPosition.current);
+        navigationPosition.current -= 1;
+        listElement[navigationPosition.current].classList.add('highLight');
+        console.log(navigationPosition.current);
+
+        if (elementToRemove.length === 2) {
+          elementToRemove[1].classList.remove('highLight');
         }
       }
     }
