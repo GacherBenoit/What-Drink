@@ -67,6 +67,7 @@ export default function keyboardNavigation(
   // We set the useState of the input with the useRef value
   if (evt.key === 'Enter') {
     const currentHighLightElement = document.getElementsByClassName('highLight');
+    // eslint-disable-next-line no-param-reassign
     currentProposition = currentHighLightElement[0].value;
     SetSearch(currentProposition);
     // Need to redirect on handleSubmit when its done

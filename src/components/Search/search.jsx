@@ -2,7 +2,10 @@
 import './search.scss';
 
 // Import NPM
-import { React, useState, useEffect, useRef } from 'react';
+import {
+  React, useState, useEffect, useRef,
+} from 'react';
+
 import axios from 'axios';
 
 // Function
@@ -52,7 +55,14 @@ function Search() {
             placeholder="Find a recipe..."
             value={search}
             onChange={(evt) => handleSearchInput(evt)}
-            onKeyDown={(evt) => keyboardNavigation(evt,  search, SetSearch, currentProposition, recipes , setRecipes)}
+            onKeyDown={(evt) => keyboardNavigation(
+              evt,
+              search,
+              SetSearch,
+              currentProposition,
+              recipes,
+              setRecipes,
+            )}
           />
           <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#">
             <img className="navbar--search__input__items__image" src={glass} alt="" />
