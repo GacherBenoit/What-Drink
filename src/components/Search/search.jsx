@@ -12,13 +12,17 @@ import icon from '../../assets/images/icon.png';
 function Search() {
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
-  const navigationPosition = { current: -1 };
+
   // We create on object to set the propertie of position at every interraction
   // The properties will be increment at every key push.
+  const navigationPosition = { current: -1 };
 
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
   const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
+
+  // Bollean to check if enter has ever pressed
+  let enterPressed = false;
 
   useEffect(() => {
     axios.get(baseUrlforCocktailCategory).then((response) => {
@@ -48,20 +52,22 @@ function Search() {
         if (navigationPosition.current === listElement.length - 1) {
           navigationPosition.current = -1;
           elementToRemove[0].classList.remove('highLight');
-          console.log(navigationPosition.current);
         }
 
         // At every interraction with arrowDown, the position is increment by +1
         // We add the className highlight to the index of the table with the current position.
-        // We add the className highlight to the index of the table with the current position.
+        // We create a currentProposition variable to store the proposition's value in highLight
         navigationPosition.current += 1;
         listElement[navigationPosition.current].classList.add('highLight');
-        console.log(navigationPosition.current);
+        let currentProposition = elementToRemove[0].value;
+        console.log(currentProposition); // HERE THE SOLUTION
 
         // If we have two element with the classname highlight , we remove the previous one
         // (here at the index 0 cause to the different direction navigation )
         if (elementToRemove.length === 2) {
           elementToRemove[0].classList.remove('highLight');
+          currentProposition = elementToRemove[0].value;
+          console.log(currentProposition);
         }
       }
 
@@ -82,9 +88,11 @@ function Search() {
 
         // At every arrowUp interraction , we decrement the current position by -1
         // We add the className highlight to the index of the table with the current position.
+        // We create a currentProposition variable to store the proposition's value in highLight
         navigationPosition.current -= 1;
         listElement[navigationPosition.current].classList.add('highLight');
-        console.log(navigationPosition.current);
+        let currentProposition = elementToRemove[0].value;
+        console.log(currentProposition); // HERE THE SOLUTION
 
         // If we have two element with the classname highlight , we remove the previous one
         // (here at the index 1 cause to the different direction navigation )
@@ -92,6 +100,14 @@ function Search() {
           elementToRemove[1].classList.remove('highLight');
         }
       }
+    }
+    if (event.key === 'Enter') {
+      enterPressed = !enterPressed;
+      // At every click on enter we switch boolean , we dont use state to not re-render .
+      // Need to check if it's a mistake.
+      //  Need to have the current highlightvalue
+      //  Set the search state at the first enterKeypress ( when its false)
+      // Redirect when the keypress at the second time (when it s true)
     }
   };
 
@@ -122,6 +138,7 @@ function Search() {
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
               .map((recipe) => (
                 <option
+                  value={recipe.strDrink}
                   className="navbar--search__input__items__list__element"
                 // Need to use anonym function to dont enter in a re-render loop.
                   onClick={
@@ -129,7 +146,7 @@ function Search() {
                 }
                   key={recipe.idDrink}
                 >
-                  {recipe.strDrink}
+                  {recipe.strDrink }
                 </option>
               ))}
           </ul>
