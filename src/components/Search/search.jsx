@@ -2,7 +2,7 @@
 import './search.scss';
 
 // Import NPM
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 // Import image
@@ -12,6 +12,7 @@ import icon from '../../assets/images/icon.png';
 function Search() {
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
+  let currentProposition = useRef(''); // We will store the value in a reference of the current element (proposition in searchBar) in highlight
 
   // We create on object to set the propertie of position at every interraction
   // The properties will be increment at every key push.
@@ -20,9 +21,6 @@ function Search() {
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
   const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
-
-  // Bollean to check if enter has ever pressed
-  let enterPressed = false;
 
   useEffect(() => {
     axios.get(baseUrlforCocktailCategory).then((response) => {
@@ -59,15 +57,11 @@ function Search() {
         // We create a currentProposition variable to store the proposition's value in highLight
         navigationPosition.current += 1;
         listElement[navigationPosition.current].classList.add('highLight');
-        let currentProposition = elementToRemove[0].value;
-        console.log(currentProposition); // HERE THE SOLUTION
 
         // If we have two element with the classname highlight , we remove the previous one
         // (here at the index 0 cause to the different direction navigation )
         if (elementToRemove.length === 2) {
           elementToRemove[0].classList.remove('highLight');
-          currentProposition = elementToRemove[0].value;
-          console.log(currentProposition);
         }
       }
 
@@ -91,8 +85,6 @@ function Search() {
         // We create a currentProposition variable to store the proposition's value in highLight
         navigationPosition.current -= 1;
         listElement[navigationPosition.current].classList.add('highLight');
-        let currentProposition = elementToRemove[0].value;
-        console.log(currentProposition); // HERE THE SOLUTION
 
         // If we have two element with the classname highlight , we remove the previous one
         // (here at the index 1 cause to the different direction navigation )
@@ -101,13 +93,14 @@ function Search() {
         }
       }
     }
+    // If we push on enter when we a element is in highlight
+    // We store the value in a reference of the current element in highlight with a useRef Hook
+    // We set the useState of the input with the useRef value
     if (event.key === 'Enter') {
-      enterPressed = !enterPressed;
-      // At every click on enter we switch boolean , we dont use state to not re-render .
-      // Need to check if it's a mistake.
-      //  Need to have the current highlightvalue
-      //  Set the search state at the first enterKeypress ( when its false)
-      // Redirect when the keypress at the second time (when it s true)
+      const currentHighLightElement = document.getElementsByClassName('highLight');
+      currentProposition = currentHighLightElement[0].value;
+      SetSearch(currentProposition);
+      // Need to redirect on handleSubmit when its done
     }
   };
 
