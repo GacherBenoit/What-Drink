@@ -40,16 +40,32 @@
         transition: transform 0.5s ease-in-out;
         position: relative;
         top: -45px;
-        right: 0px;
 
         &__items{
 
-            display: flex;
-            justify-content: flex-end;
-            margin-right: 84px;
+               
+            max-width: min-content;
+            position: relative;
+            left: 15px;
+
+                &__list{
+              
+                background-color: white;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                font-size: 0.9em;
+                margin-top: -8px;
+            
+                &__element:first-child{
+
+                    padding-top: 22px;
+                }
+            }
 
             &__button{
 
+                position: absolute;
+                right: 8px;
                 position: relative;
                 right: 29px;
                 top: 5px;
@@ -69,10 +85,16 @@
             width: 200px;
             height: 32px;
             border: solid 2px white;
+            position: relative;
+            
         }
         
        
     }
+}
+
+.highLight{
+    background-color:rgb(82, 82, 211);
 }
 
 .navbar--search [type="checkbox"]:checked ~ .navbar--search__input {
@@ -94,15 +116,29 @@
 	opacity: 1;
     
 }
+// When the user select a suggestion in the search bar , the fiels is not focus. So we set opacity to 0 to hide the list of suggestion.
+.navbar--search__input__field:not(:focus) ~ .navbar--search__input__items__list{
+     opacity: 0;
+ }
 
 // Media Queries
 
+@media screen and (min-width: 420px) {
+
+    .navbar--search__input{
+   
+     display: flex;
+     justify-content: center;
+   
+    }
+}
 @media only screen and (min-width: 768px){
 
     .navbar--search__input__field{
 
         width: 400px;
     }
+
 
 }
 @media only screen and (min-width: 900px){
@@ -121,14 +157,14 @@
 
             &__button{
 
-                position: relative;
-                right: 73px;
-                top: 1px;
+                position: absolute;
+                right: 1px;
                 background-color: orange;
                 height: 30px;
                 border-radius: 9px;
                 width: 72px;
                 border: solid 2px white;
+                top: 1px;
             }
             &__image{
 
