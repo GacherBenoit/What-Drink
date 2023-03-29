@@ -30,7 +30,7 @@ function Nav() {
           <div className={toggle ? 'navbar--burger__menu__items' : 'navbar--burger__menu__items__open'}>
             <li className="navbar--burger__menu__link "><NavLink className="navbar--burger__menu__link__button" to="/" onClick={() => setToggle(!toggle)}>Home</NavLink></li>
             <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="tools&tips" onClick={() => setToggle(!toggle)}>Tools and tip</NavLink></li>
-            <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="/whoWeAre" onClick={() => setToggle(!toggle)}>Who are we ?</NavLink></li>
+            <li className="navbar--burger__menu__link"><NavLink className="navbar--burger__menu__link__button" to="/whoweare" onClick={() => setToggle(!toggle)}>Who are we ?</NavLink></li>
           </div>
         </div>
       </nav>

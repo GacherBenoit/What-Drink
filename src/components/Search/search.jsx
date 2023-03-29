@@ -2,10 +2,10 @@
 import './search.scss';
 
 // Import NPM
-
 import {
   React, useState, useEffect, useRef,
 } from 'react';
+import { Navigate } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -41,6 +41,12 @@ function Search() {
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
   };
 
+  const handleSubmit = () => {
+    console.log('submit');
+    /*  evt.preventDefault();
+      <Navigate to="/searchresult" />; */
+  };
+
   return (
     <div className="navbar--search">
       <input className="navbar--search__checkbox" type="checkbox" />
@@ -64,10 +70,11 @@ function Search() {
               currentProposition,
               recipes,
               setRecipes,
+              handleSubmit,
             )}
           />
 
-          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#">
+          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#" onClick={(evt) => handleSubmit(evt)}>
             <img className="navbar--search__input__items__image" src={glass} alt="" />
           </button>
           <ul className="navbar--search__input__items__list">

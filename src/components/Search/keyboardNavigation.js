@@ -7,6 +7,9 @@ export default function keyboardNavigation(
   search, // useState for read the controlled field
   SetSearch, // useState setter for controlled field
   currentProposition, // the current proposition stored in useRef Hook
+  recipes,
+  setRecipes,
+  handleSubmit, // handler to redirect to result component
 ) {
   if (search && search) { // We check if the input is'nt empty
     const listElement = document.getElementsByClassName('navbar--search__input__items__list__element'); // We create a table with all propositions
@@ -70,6 +73,6 @@ export default function keyboardNavigation(
     // eslint-disable-next-line no-param-reassign
     currentProposition = currentHighLightElement[0].value;
     SetSearch(currentProposition);
-    // Need to redirect on handleSubmit when its done
+    handleSubmit();
   }
 }
