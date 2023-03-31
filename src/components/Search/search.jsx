@@ -3,14 +3,12 @@ import './search.scss';
 
 // Import NPM
 import {
-  React, useState, useEffect, useRef,
+  React, useState, useEffect,
 } from 'react';
-import { Navigate } from 'react-router-dom';
-
 import axios from 'axios';
 
 // Function
-import keyboardNavigation from './keyboardNavigation';
+import keyboardNavigation, { navigationPosition, listElement } from './keyboardNavigation';
 
 // Import image
 import glass from '../../assets/images/glass.png';
@@ -19,7 +17,6 @@ import icon from '../../assets/images/icon.png';
 function Search() {
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
-  const currentProposition = useRef(''); // We will store the value in a reference of the current element (proposition in searchBar) in highlight
 
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
@@ -41,9 +38,20 @@ function Search() {
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
   };
 
-  const handleSubmit = () => {
+  // On every change of input (search state), we set the position to -1
+  // We convert our array (type HTML Collection) to array and browse it to remove the highlight class
+  // In fact , at every proposition's change the current selection is set to reboot and disapear
+  useEffect(() => {
+    navigationPosition.current = -1;
+    const listElementToArray = [...listElement];
+    listElementToArray.forEach((element) => {
+      element.classList.remove('highLight');
+    });
+  }, [search]);
+
+  const handleSubmit = (evt) => {
     console.log('submit');
-    /*  evt.preventDefault();
+    /*   evt.preventDefault();
       <Navigate to="/searchresult" />; */
   };
 
@@ -67,9 +75,6 @@ function Search() {
               evt,
               search,
               SetSearch,
-              currentProposition,
-              recipes,
-              setRecipes,
               handleSubmit,
             )}
           />
@@ -79,7 +84,7 @@ function Search() {
           </button>
           <ul className="navbar--search__input__items__list">
 
-            {/* If search input isnt empty and recipes(data from API) isnt empty too
+           {/* If search input isnt empty and recipes(data from API) isnt empty too
              (to recieve data from API) ,the filter function is functionnal */}
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
               .map((recipe) => (
