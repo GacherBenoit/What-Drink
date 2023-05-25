@@ -64,13 +64,22 @@ export default function keyboardNavigation(
       }
     }
   }
-  // If we push on enter when we a element is in highlight
-  // We store the value in a reference of the current element in highlight with a useRef Hook
-  // We set the useState of the input with the useRef value
+  // If we push on enter we set the search's state to the element in highlight's value
   if (evt.key === 'Enter') {
-    const currentHighLightElement = document.getElementsByClassName('highLight');
-    // eslint-disable-next-line no-param-reassign
-    SetSearch(currentHighLightElement[0].value);
-    handleSubmit();
+    // To not sent an error in console when none element is in highlight
+    // we declare the variable only if current position isn't on -1
+    if (navigationPosition.current !== -1) {
+      const currentHighLightElement = document.getElementsByClassName('highLight');
+      if (currentHighLightElement[0].value !== undefined) {
+        SetSearch(currentHighLightElement[0].value);
+      }
+    }
+    /* SetSearch(currentHighLightElement[0].value); */
+    /* handleSubmit(); */
   }
 }
+// Logique 
+
+// Crée un compteur pour la touche entré
+// Crée une valeur de référence pour avoir l element cliquer avec entré
+// Si la touche entré est cliqué 2 fois avec la meme valeur de reference alors ont appelle handle submit
