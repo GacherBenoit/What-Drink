@@ -32,26 +32,10 @@ function Search() {
       .catch((err) => console.log(err));
   }, []);
 
-  const checkSuggestion = () => { ////  A CONTINUER  BUG ////
-    const currentSuggestion = document.getElementsByClassName('navbar--search__input__items__list__element');
-    const suggestionToHide = [...currentSuggestion];
-    if (suggestionToHide.length === 1 && suggestionToHide[0].textContent === search) {
-      const elementToHide = document.getElementsByClassName('navbar--search__input__items__list');
-
-      setInterval(() => elementToHide[0].classList.add('elementToHide'), 3000);
-    }
-    if (suggestionToHide.length > 1)
-    {
-      const elementToHide = document.getElementsByClassName('navbar--search__input__items__list');
-      elementToHide[0].classList.remove('elementToHide')
-    }
-  };
-
   const handleSearchInput = (evt) => {
     SetSearch(evt.target.value);
    /*  SetSearch(evt.target.value.charAt(0).toUpperCase()
             + evt.target.value.slice(1).toLowerCase()); */
-    checkSuggestion();
 
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
@@ -127,3 +111,10 @@ function Search() {
 }
 
 export default Search;
+
+
+
+//Objectif 1 Convertir la réponse du state avec une majuscule au départ et minuscule ensuite
+// Objectif 2 A Chaque changement du tableau filtré : - Verifier si il n y a qu une seule proposition
+//                                                    - Dans ce cas , cacher les propositions
+//                                                    
