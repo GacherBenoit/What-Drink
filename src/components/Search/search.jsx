@@ -24,11 +24,15 @@ function Search() {
   // we use free access and cant have the full list for the momment
   const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
 
-  useEffect(() => {
-    axios.get(baseUrlforCocktailCategory).then((response) => {
-    //  console.log(response.data);
-      setRecipes(response.data.drinks);
-    })
+  useEffect(() => { // NEED TO EXPLAIN
+    axios.get(baseUrlforCocktailCategory)
+      .then((response) => {
+        const modifiedDrinks = response.data.drinks.map(drink => {
+          const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase() + drink.strDrink.slice(1).toLowerCase();
+          return { ...drink, strDrink: capitalizedDrink };
+        });
+        setRecipes(modifiedDrinks);
+      })
       .catch((err) => console.log(err));
   }, []);
 
