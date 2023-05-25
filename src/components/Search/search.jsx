@@ -5,6 +5,7 @@ import './search.scss';
 import {
   React, useState, useEffect,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Function
@@ -17,6 +18,7 @@ import icon from '../../assets/images/icon.png';
 function Search() {
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
+  const navigate = useNavigate();
 
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
@@ -49,10 +51,8 @@ function Search() {
     });
   }, [search]);
 
-  const handleSubmit = (evt) => {
-    console.log('submit');
-    /*   evt.preventDefault();
-      <Navigate to="/searchresult" />; */
+  const handleSubmit = () => {
+    navigate('/searchresult');
   };
 
   return (
