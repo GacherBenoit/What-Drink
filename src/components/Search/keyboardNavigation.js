@@ -66,6 +66,9 @@ export default function keyboardNavigation(
   }
   // If we push on enter we set the search's state to the element in highlight's value
   if (evt.key === 'Enter') {
+    if (navigationPosition.current === -1) {
+      handleSubmit();
+    }
     // To not sent an error in console when none element is in highlight
     // we declare the variable only if current position isn't on -1
     if (navigationPosition.current !== -1) {
@@ -74,12 +77,5 @@ export default function keyboardNavigation(
         SetSearch(currentHighLightElement[0].value);
       }
     }
-    /* SetSearch(currentHighLightElement[0].value); */
-    /* handleSubmit(); */
   }
 }
-// Logique 
-
-// Crée un compteur pour la touche entré
-// Crée une valeur de référence pour avoir l element cliquer avec entré
-// Si la touche entré est cliqué 2 fois avec la meme valeur de reference alors ont appelle handle submit

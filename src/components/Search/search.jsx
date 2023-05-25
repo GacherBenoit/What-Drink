@@ -50,7 +50,7 @@ function Search() {
       element.classList.remove('highLight');
     });
   }, [search]);
-
+ // Function to redirect to the result page
   const handleSubmit = () => {
     navigate('/searchresult');
   };
