@@ -44,10 +44,29 @@ function Search() {
   const handleSearchInput = (evt) => {
     SetSearch(evt.target.value.charAt(0).toUpperCase()
             + evt.target.value.slice(1).toLowerCase());
+            console.log('le champ est modifié');
 
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
+  };
+
+  // Function to check proposition
+  // We check in case if the proposition have only one element and similar to the input
+  // In this case we hidden the proposition to adding a class
+  // And remove it when the input change
+  const checkPropositionList = () => {
+    const listToHide = document.getElementsByClassName('navbar--search__input__items__list');
+
+    if (listElement[0] && listElement[0].value !== search) {
+      listToHide[0].classList.remove('hidden-effect');
+    }
+    if (listElement.length === 1 && listElement[0].value === search) {
+      // eslint-disable-next-line no-return-assign
+      setTimeout(() => {
+        listToHide[0].classList.add('hidden-effect');
+      }, 2000);
+    }
   };
 
   // On every change of input (search state), we set the position to -1
@@ -59,6 +78,7 @@ function Search() {
     listElementToArray.forEach((element) => {
       element.classList.remove('highLight');
     });
+    checkPropositionList();
   }, [search]);
 
   // Function to redirect to the result page
@@ -66,6 +86,7 @@ function Search() {
     navigate('/searchresult');
   };
 
+  
   return (
     <div className="navbar--search">
       <input className="navbar--search__checkbox" type="checkbox" />
@@ -121,8 +142,7 @@ function Search() {
 export default Search;
 
 
-
-//Objectif 1 Convertir la réponse du state avec une majuscule au départ et minuscule ensuite
-// Objectif 2 A Chaque changement du tableau filtré : - Verifier si il n y a qu une seule proposition
-//                                                    - Dans ce cas , cacher les propositions
-//                                                    
+// Objectif 2 A Chaque changement du tableau filtré : 
+// - executer une fonction quand il ne reste qu'une proposition égale a la valeur du champ
+// - selectionner la proposition restante
+// - la cacher                                                   
