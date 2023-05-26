@@ -24,7 +24,12 @@ function Search() {
   // we use free access and cant have the full list for the momment
   const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
 
-  useEffect(() => { // NEED TO EXPLAIN
+  // In response part, we iterate on every element on drink with map
+  // Extract the value of the property strDrink
+  // Make the letter convertion with different method toUpperCase & toLowerCase
+  // Use destructuring to create a new object, a copy of drink with the modified property strDrink
+  // And set the State with the new object
+  useEffect(() => {
     axios.get(baseUrlforCocktailCategory)
       .then((response) => {
         const modifiedDrinks = response.data.drinks.map(drink => {
@@ -37,9 +42,8 @@ function Search() {
   }, []);
 
   const handleSearchInput = (evt) => {
-    SetSearch(evt.target.value);
-   /*  SetSearch(evt.target.value.charAt(0).toUpperCase()
-            + evt.target.value.slice(1).toLowerCase()); */
+    SetSearch(evt.target.value.charAt(0).toUpperCase()
+            + evt.target.value.slice(1).toLowerCase());
 
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
