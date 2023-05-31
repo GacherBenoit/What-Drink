@@ -8,13 +8,13 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 // Import Components
-import Nav from '../Nav/nav';
+import Nav from '../Nav/Nav';
 import Main from '../Main/main';
 import Footer from '../Footer/footer';
 import ToolsAndTips from '../ToolsAndTips/toolsAndTips';
 import WhoWeAre from '../WhoWeAre/whoWeAre';
 import Cocktails from '../Cocktails/cocktail';
-import SearchResult from '../SearchResult/searchResult';
+import SearchResult from '../SearchResult/SearchResult';
 
 function App() {
   // We define states for controlled field and to recieve data at first parent of the Application
@@ -56,7 +56,7 @@ function App() {
         <Route path="/cocktails" element={<Cocktails />} />
         <Route path="/tools&tips" element={<ToolsAndTips />} />
         <Route path="/whoweare" element={<WhoWeAre />} />
-        <Route path="/searchresult" element={<SearchResult />} />
+        <Route path="/searchresult" element={<SearchResult search={search} recipes={recipes} />} />
       </Routes>
       <Footer />
     </div>
