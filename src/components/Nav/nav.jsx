@@ -3,6 +3,7 @@ import './nav.scss';
 
 // Import NPM
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 // Import Image
@@ -12,7 +13,7 @@ import logo from '../../assets/images/Logo-01.png';
 // Import Components
 import Search from '../Search/search';
 
-function Nav() {
+function Nav({search, SetSearch, recipes }) {
   const [toggle, setToggle] = useState(true);
   return (
     <div className="navbar">
@@ -34,9 +35,23 @@ function Nav() {
           </div>
         </div>
       </nav>
-      <Search />
+      <Search {...{
+        search, SetSearch, recipes,
+      }}
+      />
     </div>
   );
 }
-
+// Prop types for our Component
+Nav.defaultProps = {
+  search: PropTypes.string,
+  SetSearch: PropTypes.func,
+  recipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.number.isRequired,
+      strDrink: PropTypes.string.isRequired,
+      strDrinkThumb: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 export default Nav;

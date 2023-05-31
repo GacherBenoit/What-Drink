@@ -5,8 +5,8 @@ import './search.scss';
 import {
   React, useState, useEffect,
 } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 // Function
 import keyboardNavigation, { navigationPosition, listElement } from './keyboardNavigation';
@@ -15,31 +15,9 @@ import keyboardNavigation, { navigationPosition, listElement } from './keyboardN
 import glass from '../../assets/images/glass.png';
 import icon from '../../assets/images/icon.png';
 
-function Search() {
-  const [search, SetSearch] = useState('');
-  const [recipes, setRecipes] = useState([]);
+function Search(
+  { search, SetSearch, recipes }) {
   const navigate = useNavigate();
-
-  // Base URL for search by cocktail category because
-  // we use free access and cant have the full list for the momment
-  const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
-
-  // In response part, we iterate on every element on drink with map
-  // Extract the value of the property strDrink
-  // Make the letter convertion with different method toUpperCase & toLowerCase
-  // Use destructuring to create a new object, a copy of drink with the modified property strDrink
-  // And set the State with the new object
-  useEffect(() => {
-    axios.get(baseUrlforCocktailCategory)
-      .then((response) => {
-        const modifiedDrinks = response.data.drinks.map(drink => {
-          const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase() + drink.strDrink.slice(1).toLowerCase();
-          return { ...drink, strDrink: capitalizedDrink };
-        });
-        setRecipes(modifiedDrinks);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   const handleSearchInput = (evt) => {
     SetSearch(evt.target.value.charAt(0).toUpperCase()
@@ -138,11 +116,15 @@ function Search() {
     </div>
   );
 }
-
+Search.defaultProps = {
+  search: PropTypes.string,
+  SetSearch: PropTypes.func,
+  recipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.number.isRequired,
+      strDrink: PropTypes.string.isRequired,
+      strDrinkThumb: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 export default Search;
-
-
-// Objectif 2 A Chaque changement du tableau filtré : 
-// - executer une fonction quand il ne reste qu'une proposition égale a la valeur du champ
-// - selectionner la proposition restante
-// - la cacher                                                   
