@@ -1,15 +1,16 @@
 // We create on object to set the propertie of position at every interraction
 // The properties will be increment at every key push.
-const navigationPosition = { current: -1 };
+export const navigationPosition = { current: -1 };
 
+// We create a table with all propositions
+export const listElement = document.getElementsByClassName('navbar--search__input__items__list__element');
 export default function keyboardNavigation(
   evt, // The event object to have the key properties to check what keyboard touch has pressed
-  search, // useState for read the controlled field
-  SetSearch, // useState setter for controlled field
-  currentProposition, // the current proposition stored in useRef Hook
+  search,
+  SetSearch, // useState for read the controlled field
+  handleSubmit, // handler to redirect to result component
 ) {
   if (search && search) { // We check if the input is'nt empty
-    const listElement = document.getElementsByClassName('navbar--search__input__items__list__element'); // We create a table with all propositions
     const elementToRemove = document.getElementsByClassName('highLight'); // We create a table with the recipes with highlight className
 
     // On arrowdown interraction, if the current position is set at the end of the table:
@@ -24,6 +25,7 @@ export default function keyboardNavigation(
       // At every interraction with arrowDown, the position is increment by +1
       // We add the className highlight to the index of the table with the current position.
       // We create a currentProposition variable to store the proposition's value in highLight
+
       navigationPosition.current += 1;
       listElement[navigationPosition.current].classList.add('highLight');
 
@@ -62,14 +64,18 @@ export default function keyboardNavigation(
       }
     }
   }
-  // If we push on enter when we a element is in highlight
-  // We store the value in a reference of the current element in highlight with a useRef Hook
-  // We set the useState of the input with the useRef value
+  // If we push on enter we set the search's state to the element in highlight's value
   if (evt.key === 'Enter') {
-    const currentHighLightElement = document.getElementsByClassName('highLight');
-    // eslint-disable-next-line no-param-reassign
-    currentProposition = currentHighLightElement[0].value;
-    SetSearch(currentProposition);
-    // Need to redirect on handleSubmit when its done
+    if (navigationPosition.current === -1) {
+      handleSubmit();
+    }
+    // To not sent an error in console when none element is in highlight
+    // we declare the variable only if current position isn't on -1
+    if (navigationPosition.current !== -1) {
+      const currentHighLightElement = document.getElementsByClassName('highLight');
+      if (currentHighLightElement[0].value !== undefined) {
+        SetSearch(currentHighLightElement[0].value);
+      }
+    }
   }
 }

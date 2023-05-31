@@ -2,15 +2,14 @@
 import './search.scss';
 
 // Import NPM
-
 import {
-  React, useState, useEffect, useRef,
+  React, useState, useEffect,
 } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Function
-import keyboardNavigation from './keyboardNavigation';
+import keyboardNavigation, { navigationPosition, listElement } from './keyboardNavigation';
 
 // Import image
 import glass from '../../assets/images/glass.png';
@@ -19,28 +18,75 @@ import icon from '../../assets/images/icon.png';
 function Search() {
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
-  const currentProposition = useRef(''); // We will store the value in a reference of the current element (proposition in searchBar) in highlight
+  const navigate = useNavigate();
 
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
   const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
 
+  // In response part, we iterate on every element on drink with map
+  // Extract the value of the property strDrink
+  // Make the letter convertion with different method toUpperCase & toLowerCase
+  // Use destructuring to create a new object, a copy of drink with the modified property strDrink
+  // And set the State with the new object
   useEffect(() => {
-    axios.get(baseUrlforCocktailCategory).then((response) => {
-    //  console.log(response.data);
-      setRecipes(response.data.drinks);
-    })
+    axios.get(baseUrlforCocktailCategory)
+      .then((response) => {
+        const modifiedDrinks = response.data.drinks.map(drink => {
+          const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase() + drink.strDrink.slice(1).toLowerCase();
+          return { ...drink, strDrink: capitalizedDrink };
+        });
+        setRecipes(modifiedDrinks);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   const handleSearchInput = (evt) => {
     SetSearch(evt.target.value.charAt(0).toUpperCase()
             + evt.target.value.slice(1).toLowerCase());
+            console.log('le champ est modifié');
+
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
   };
 
+  // Function to check proposition
+  // We check in case if the proposition have only one element and similar to the input
+  // In this case we hidden the proposition to adding a class
+  // And remove it when the input change
+  const checkPropositionList = () => {
+    const listToHide = document.getElementsByClassName('navbar--search__input__items__list');
+
+    if (listElement[0] && listElement[0].value !== search) {
+      listToHide[0].classList.remove('hidden-effect');
+    }
+    if (listElement.length === 1 && listElement[0].value === search) {
+      // eslint-disable-next-line no-return-assign
+      setTimeout(() => {
+        listToHide[0].classList.add('hidden-effect');
+      }, 2000);
+    }
+  };
+
+  // On every change of input (search state), we set the position to -1
+  // We convert our array (type HTML Collection) to array and browse it to remove the highlight class
+  // In fact , at every proposition's change the current selection is set to reboot and disapear
+  useEffect(() => {
+    navigationPosition.current = -1;
+    const listElementToArray = [...listElement];
+    listElementToArray.forEach((element) => {
+      element.classList.remove('highLight');
+    });
+    checkPropositionList();
+  }, [search]);
+
+  // Function to redirect to the result page
+  const handleSubmit = () => {
+    navigate('/searchresult');
+  };
+
+  
   return (
     <div className="navbar--search">
       <input className="navbar--search__checkbox" type="checkbox" />
@@ -61,18 +107,16 @@ function Search() {
               evt,
               search,
               SetSearch,
-              currentProposition,
-              recipes,
-              setRecipes,
+              handleSubmit,
             )}
           />
 
-          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#">
+          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#" onClick={(evt) => handleSubmit(evt)}>
             <img className="navbar--search__input__items__image" src={glass} alt="" />
           </button>
           <ul className="navbar--search__input__items__list">
 
-            {/* If search input isnt empty and recipes(data from API) isnt empty too
+           {/* If search input isnt empty and recipes(data from API) isnt empty too
              (to recieve data from API) ,the filter function is functionnal */}
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
               .map((recipe) => (
@@ -96,3 +140,9 @@ function Search() {
 }
 
 export default Search;
+
+
+// Objectif 2 A Chaque changement du tableau filtré : 
+// - executer une fonction quand il ne reste qu'une proposition égale a la valeur du champ
+// - selectionner la proposition restante
+// - la cacher                                                   

@@ -6,7 +6,8 @@ import React from 'react';
 
 function searchResult() {
   return (
-    <div className='searchResult'>
+    <div className="searchResult">
+      <h1>PAGE DE RESULTAT DE RECHERCHE</h1>
     </div>
   );
 }
