@@ -3,7 +3,7 @@ import './search.scss';
 
 // Import NPM
 import {
-  React, useState, useEffect,
+  React, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -16,17 +16,20 @@ import glass from '../../assets/images/glass.png';
 import icon from '../../assets/images/icon.png';
 
 function Search(
-  { search, SetSearch, recipes }) {
+  {
+    search,
+    SetSearch,
+    recipes,
+  },
+) {
   const navigate = useNavigate();
-
-  const handleSearchInput = (evt) => {
-    SetSearch(evt.target.value.charAt(0).toUpperCase()
-            + evt.target.value.slice(1).toLowerCase());
-            console.log('le champ est modifié');
 
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
+  const handleSearchInput = (evt) => {
+    SetSearch(evt.target.value.charAt(0).toUpperCase()
+            + evt.target.value.slice(1).toLowerCase());
   };
 
   // Function to check proposition
@@ -48,7 +51,7 @@ function Search(
   };
 
   // On every change of input (search state), we set the position to -1
-  // We convert our array (type HTML Collection) to array and browse it to remove the highlight class
+  // We convert array (type HTML Collection) to array and browse it to remove the highlight class
   // In fact , at every proposition's change the current selection is set to reboot and disapear
   useEffect(() => {
     navigationPosition.current = -1;
@@ -64,7 +67,6 @@ function Search(
     navigate('/searchresult');
   };
 
-  
   return (
     <div className="navbar--search">
       <input className="navbar--search__checkbox" type="checkbox" />
@@ -94,7 +96,7 @@ function Search(
           </button>
           <ul className="navbar--search__input__items__list">
 
-           {/* If search input isnt empty and recipes(data from API) isnt empty too
+            {/* If search input isnt empty and recipes(data from API) isnt empty too
              (to recieve data from API) ,the filter function is functionnal */}
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
               .map((recipe) => (
@@ -116,12 +118,13 @@ function Search(
     </div>
   );
 }
-Search.defaultProps = {
-  search: PropTypes.string,
-  SetSearch: PropTypes.func,
+// Prop types for our Component
+Search.propTypes = {
+  search: PropTypes.string.isRequired,
+  SetSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
-      idDrink: PropTypes.number.isRequired,
+      idDrink: PropTypes.string.isRequired,
       strDrink: PropTypes.string.isRequired,
       strDrinkThumb: PropTypes.string.isRequired,
     }),
