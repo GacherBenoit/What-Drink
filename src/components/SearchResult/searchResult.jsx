@@ -5,10 +5,14 @@ import './searchResult.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Component
+import Card from '../Card/card';
+
 function SearchResult({ search, recipes }) {
   return (
     <div className="searchResult">
       <h1>PAGE DE RESULTAT DE RECHERCHE</h1>
+      <Card />
     </div>
   );
 }

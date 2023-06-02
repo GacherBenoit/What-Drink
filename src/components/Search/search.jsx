@@ -119,6 +119,7 @@ function Search(
   );
 }
 // Prop types for our Component
+//
 Search.propTypes = {
   search: PropTypes.string.isRequired,
   SetSearch: PropTypes.func.isRequired,

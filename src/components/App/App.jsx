@@ -8,13 +8,13 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 // Import Components
-import Nav from '../Nav/Nav';
+import Nav from '../Nav/nav';
 import Main from '../Main/main';
 import Footer from '../Footer/footer';
 import ToolsAndTips from '../ToolsAndTips/toolsAndTips';
 import WhoWeAre from '../WhoWeAre/whoWeAre';
 import Cocktails from '../Cocktails/cocktail';
-import SearchResult from '../SearchResult/SearchResult';
+import SearchResult from '../SearchResult/searchResult';
 
 function App() {
   // We define states for controlled field and to recieve data at first parent of the Application

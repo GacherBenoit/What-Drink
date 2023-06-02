@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/Logo-01.png';
 
 // Import Components
-import Search from '../Search/Search';
+import Search from '../Search/search';
 
 // LinterRules
 /* eslint-disable jsx-a11y/control-has-associated-label */
