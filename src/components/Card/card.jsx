@@ -6,7 +6,9 @@ import './card.scss';
 
 function Card() {
   return (
-    <h1>COMPOSANT CARD</h1>
+    <div className='card'>
+        <h3 className='Card--title'>Mojito</h3>
+    </div>
   );
 }
 

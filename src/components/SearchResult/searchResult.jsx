@@ -11,8 +11,12 @@ import Card from '../Card/card';
 function SearchResult({ search, recipes }) {
   return (
     <div className="searchResult">
-      <h1>PAGE DE RESULTAT DE RECHERCHE</h1>
-      <Card />
+      <div className="searchResult--header">
+        <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
+      </div>
+      <section className="searchResult--cardList">
+        <Card />
+      </section>
     </div>
   );
 }
