@@ -10,7 +10,9 @@ function Card() {
       <div className="card--container">
         <div className="card--container__element">
           <img className="card--container__element__image" src="https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg" alt="" />
-          <div className="card--container__element__image__bottom" />
+          <div className="card--container__element__image__bottom">
+            <p className="card--container__element__image__bottom__title">My cocktail</p>
+          </div>
         </div>
       </div>
     </div>
