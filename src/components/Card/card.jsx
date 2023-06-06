@@ -1,5 +1,5 @@
 // Import NPM
-import React from 'react';
+import { React, useState } from 'react';
 
 // Import CSS
 import './card.scss';
@@ -8,13 +8,20 @@ import './card.scss';
 import logoSeeMore from './../../assets/images/seemore.png';
 
 function Card() {
+  const [cardReturned, setCardReturned] = useState(false);
+
+  const handleClickCard = () => {
+    setCardReturned(!cardReturned);
+    console.log(cardReturned);
+  };
+
   return (
     <div className="card">
       <div className="card--container">
         <div className="card--container__element">
           <div className="card--container__element__link">
             <div className="card--container__element__link__content">
-              <button type="button" className="card--container__element__link__content__button">
+              <button type="button" className="card--container__element__link__content__button" onClick={(handleClickCard)}>
                 <img className="card--container__element__link__content__logo" alt="see full recipe" src={logoSeeMore} />
               </button>
             </div>
