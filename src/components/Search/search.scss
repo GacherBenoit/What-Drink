@@ -116,9 +116,9 @@
     
 }
 // When the user select a suggestion in the search bar , the fiels is not focus. So we set opacity to 0 to hide the list of suggestion.
-/* .navbar--search__input__field:not(:focus) ~ .navbar--search__input__items__list{
+.navbar--search__input__field:not(:focus) ~ .navbar--search__input__items__list{
      opacity: 0;
- } */
+ }
 
  .hidden-effect{
     
