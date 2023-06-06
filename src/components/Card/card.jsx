@@ -4,6 +4,9 @@ import React from 'react';
 // Import CSS
 import './card.scss';
 
+// Import Image
+import logoSeeMore from './../../assets/images/seemore.png';
+
 function Card() {
   return (
     <div className="card">
@@ -11,8 +14,8 @@ function Card() {
         <div className="card--container__element">
           <div className="card--container__element__link">
             <div className="card--container__element__link__content">
-              <button type="button">
-                <image />
+              <button type="button" className="card--container__element__link__content__button">
+                <img className="card--container__element__link__content__logo" alt="see full recipe" src={logoSeeMore} />
               </button>
             </div>
           </div>
