@@ -8,11 +8,11 @@ import './card.scss';
 import logoSeeMore from './../../assets/images/seemore.png';
 
 function Card() {
-  const [cardReturned, setCardReturned] = useState(false);
+  const [cardClicked, setCardClicked] = useState(false);
 
   const handleClickCard = () => {
-    setCardReturned(!cardReturned);
-    console.log(cardReturned);
+    setCardClicked(!cardClicked);
+    console.log(cardClicked);
   };
 
   return (
@@ -20,14 +20,14 @@ function Card() {
       <div className="card--container">
         <div className="card--container__element">
           <div className="card--container__element__link">
-            <div className="card--container__element__link__content">
+            <div className={`card--container__element__link__content${cardClicked ? '__show' : ''}`}>
               <button type="button" className="card--container__element__link__content__button" onClick={(handleClickCard)}>
-                <img className="card--container__element__link__content__logo" alt="see full recipe" src={logoSeeMore} />
+                <img className={`card--container__element__link__content__logo${cardClicked ? '__show' : ''}`} alt="see full recipe" src={logoSeeMore} />
               </button>
             </div>
           </div>
-          <img className="card--container__element__image" src="https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg" alt="" />
-          <div className="card--container__element__image__bottom">
+          <img className={`card--container__element__image${cardClicked ? '__show' : ''}`} src="https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg" alt="" />
+          <div className={`card--container__element__image__bottom${cardClicked ? '__show' : ''}`}>
             <p className="card--container__element__image__bottom__title">My cocktail</p>
           </div>
         </div>

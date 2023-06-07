@@ -22,37 +22,72 @@
         &__element{
 
             width: 100%;
-            height: 100px;
             height: 98%;
             overflow: hidden;
             border-radius: 12px;
+            border: solid white 1px;
 
             &__link{
 
                 position: absolute;
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
                 background-color: white;
-                left: 6px;
-                top: 8px;
+                left: 145px;
+                top: 277px;
                 clip-path: circle(50% at 50% 50%);
+
 
                 &__content{
 
-                    position: absolute;
+                    position: relative;
                     width: 36px;
                     height: 36px;
                     background-color: #FF9800;
-                    left: 2px;
-                    top: 2px;
+                    left: 4px;
+                    top: 4px;
                     clip-path: circle(50% at 50% 50%);
-                    
+
+                    &__show{
+
+                    position: relative;
+                    width: 36px;
+                    height: 36px;
+                    background-color: #FF9800;
+                    left: 4px;     // HERE TO ANIMATE CIRCLE IN ARROW
+                    top: 4px;
+                    animation-name:toCross;
+                    animation-duration: 1.5s;
+                    animation-fill-mode: forwards;
+                    }
+                   // CSS animation here to convers circle to croos
+                    @keyframes toCross{
+                     
+                        0%{
+                        clip-path: circle(50% at 50% 50%);
+                        width: 36px;
+                        height: 36px;
+                         }
+    
+                        50%{
+                        width: 36px;
+                        height: 36px;
+                         }
+                        100%{
+                        rotate:360deg ;
+                        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+                        width: 36px;
+                        height: 36px;        
+                        }    
+                        }
+                          
                     &__button {
 
                         width: 50px;
                         height: 50px;
                         background-color: orange;
                         display: flex;
+                        
                     }
 
                     &__logo{
@@ -60,9 +95,21 @@
                         width: 36px;
                         height: 36px;
                         padding: 2px;
+                        transition-property: opacity;
+                        transition-duration: 1.5s;
+                        opacity: 1;
+                       
+                        &__show{
+                            // CSS ANIMATION HERE TO HIDDE POINT
+                            width: 36px;
+                            height: 36px;
+                            padding: 2px;  
+                            transition-property: opacity;
+                            transition-duration: 0.5s;
+                            opacity: 0;
+                        }
                     }
                 }
-                
             }
            
 
@@ -70,25 +117,47 @@
 
                 width: auto;
                 height: 100%;
-                object-fit: contain;
+                transition-property: height;
+                transition-duration: 2s;
+                position: relative;
+                z-index: -1;
+                
+                &__show{
+
+                    width: auto;
+                    height: 203px;
+                    transition-property: height;
+                    transition-duration: 2s;
+                    position: relative;
+                    z-index: -1;
+                }
 
 
                  &__bottom{
-                    background-color: orange;
-                    position: absolute;
-                    width: 100%;
-                    height: 100px;
-                    top: 230px;
-                    border-radius: 12px;
-                    text-align: center;
-                    padding-top: 12px;
-                    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+                    
+                    position: relative;
+                    bottom: 60px;
+                    z-index: -1;
+                    background-color: white;
+                    height: 58px;
+                    transition-property: height;
+                    transition-duration: 2s;
+
+                    &__show{
+
+                        position: relative;
+                        bottom: 60px;
+                        z-index: -1;
+                        background-color: white;
+                        height: 180px;
+                        transition-property: height;
+                        transition-duration: 2s;
+                    }
+                
 
                     &__title{
 
-                        position: relative;
-                        top: 60px;
-                        left: 15px;
+                      
 
                     }
                     
@@ -101,5 +170,5 @@
     }
 }
 
-
+  
                     
