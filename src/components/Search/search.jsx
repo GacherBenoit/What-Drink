@@ -3,7 +3,7 @@ import './search.scss';
 
 // Import NPM
 import {
-  React, useEffect,
+  React, forwardRef, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -15,15 +15,10 @@ import keyboardNavigation, { navigationPosition, listElement } from './keyboardN
 import glass from '../../assets/images/glass.png';
 import icon from '../../assets/images/icon.png';
 
-function Search(
-  {
-    search,
-    SetSearch,
-    recipes,
-  },
-) {
-  const navigate = useNavigate();
+const Search = forwardRef((props, inputRef) => {
+  const { search, SetSearch, recipes } = props;
 
+  const navigate = useNavigate();
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
@@ -63,8 +58,11 @@ function Search(
   }, [search]);
 
   // Function to redirect to the result page
+  // And set reference value of the input
   const handleSubmit = () => {
     navigate('/searchresult');
+    /* const myRef = ref.current.value;
+    console.log(myRef); */
   };
 
   return (
@@ -81,6 +79,7 @@ function Search(
             className="navbar--search__input__field"
             type="texte"
             placeholder="Find a recipe..."
+            ref={inputRef}
             value={search}
             onChange={(evt) => handleSearchInput(evt)}
             onKeyDown={(evt) => keyboardNavigation(
@@ -117,7 +116,8 @@ function Search(
       </div>
     </div>
   );
-}
+});
+
 // Prop types for our Component
 //
 Search.propTypes = {

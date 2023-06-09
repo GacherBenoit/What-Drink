@@ -2,7 +2,7 @@
 import './searchResult.scss';
 
 // import NPM
-import React from 'react';
+import { React } from 'react';
 import PropTypes from 'prop-types';
 
 // Component

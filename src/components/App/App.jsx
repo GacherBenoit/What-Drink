@@ -2,7 +2,9 @@
 import './App.scss';
 import '../../styles/index.scss';
 // Import NPM
-import { React, useEffect, useState } from 'react';
+import {
+  React, useEffect, useState, useRef, createRef,
+} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -17,17 +19,19 @@ import Cocktails from '../Cocktails/cocktail';
 import SearchResult from '../SearchResult/searchResult';
 
 function App() {
+  // Input Reference
+  const inputRef = createRef();
+  console.log(inputRef);
   // We define states for controlled field and to recieve data at first parent of the Application
   // And launch the useEffect to fetch data of recipes to access them into multiple components
-  // In this app , for Search and SearchResult components
+  // For Search and SearchResult components
   // Search component for the user's shearch and propositions
   // SearchResult component to show result of the user's search with the cards
-
   const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
-
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
+
   const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
 
   useEffect(() => {
@@ -50,7 +54,12 @@ function App() {
   // And set the State with the new object
   return (
     <div className="app">
-      <Nav search={search} SetSearch={SetSearch} recipes={recipes} />
+      <Nav
+        search={search}
+        SetSearch={SetSearch}
+        recipes={recipes}
+        ref={inputRef}
+      />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cocktails" element={<Cocktails />} />

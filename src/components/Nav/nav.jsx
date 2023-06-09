@@ -2,7 +2,7 @@
 import './nav.scss';
 
 // Import NPM
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
@@ -16,7 +16,9 @@ import Search from '../Search/search';
 // LinterRules
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
-function Nav({ search, SetSearch, recipes }) {
+const Nav = forwardRef((props, inputRef) => {
+  const { search, SetSearch, recipes } = props;
+
   const [toggle, setToggle] = useState(true);
   return (
     <div className="navbar">
@@ -38,13 +40,13 @@ function Nav({ search, SetSearch, recipes }) {
           </div>
         </div>
       </nav>
-      <Search {...{
-        search, SetSearch, recipes,
-      }}
+      <Search
+        {...{ search, SetSearch, recipes }}
+        ref={inputRef}
       />
     </div>
   );
-}
+});
 // Prop types for our Component
 Nav.propTypes = {
   search: PropTypes.string.isRequired,
