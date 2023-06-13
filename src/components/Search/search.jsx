@@ -3,7 +3,7 @@ import './search.scss';
 
 // Import NPM
 import {
-  React, forwardRef, useEffect,
+  React, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -15,10 +15,15 @@ import keyboardNavigation, { navigationPosition, listElement } from './keyboardN
 import glass from '../../assets/images/glass.png';
 import icon from '../../assets/images/icon.png';
 
-const Search = forwardRef((props, inputRef) => {
-  const { search, SetSearch, recipes } = props;
-
+function Search(
+  {
+    search,
+    SetSearch,
+    recipes,
+  },
+) {
   const navigate = useNavigate();
+
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
@@ -58,11 +63,10 @@ const Search = forwardRef((props, inputRef) => {
   }, [search]);
 
   // Function to redirect to the result page
-  // And set reference value of the input
+  // And save current user's serach with currentSearch function
   const handleSubmit = () => {
     navigate('/searchresult');
-    /* const myRef = ref.current.value;
-    console.log(myRef); */
+    SetSearch({ ...search }, { ...search });
   };
 
   return (
@@ -76,10 +80,10 @@ const Search = forwardRef((props, inputRef) => {
         <div className="navbar--search__input__items">
 
           <input
+            id="search"
             className="navbar--search__input__field"
             type="texte"
             placeholder="Find a recipe..."
-            ref={inputRef}
             value={search}
             onChange={(evt) => handleSearchInput(evt)}
             onKeyDown={(evt) => keyboardNavigation(
@@ -90,7 +94,7 @@ const Search = forwardRef((props, inputRef) => {
             )}
           />
 
-          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#" onClick={(evt) => handleSubmit(evt)}>
+          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#" onClick={(evt) => { handleSubmit(evt); currentSearch(search); }}>
             <img className="navbar--search__input__items__image" src={glass} alt="" />
           </button>
           <ul className="navbar--search__input__items__list">
@@ -116,8 +120,7 @@ const Search = forwardRef((props, inputRef) => {
       </div>
     </div>
   );
-});
-
+}
 // Prop types for our Component
 //
 Search.propTypes = {
