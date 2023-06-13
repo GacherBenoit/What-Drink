@@ -66,7 +66,6 @@ function Search(
   // And save current user's serach with currentSearch function
   const handleSubmit = () => {
     navigate('/searchresult');
-    SetSearch({ ...search }, { ...search });
   };
 
   return (
@@ -94,7 +93,7 @@ function Search(
             )}
           />
 
-          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#" onClick={(evt) => { handleSubmit(evt); currentSearch(search); }}>
+          <button className="navbar--search__input__items__button" type="submit" label="searchBar" href="#" onClick={(evt) => handleSubmit(evt)}>
             <img className="navbar--search__input__items__image" src={glass} alt="" />
           </button>
           <ul className="navbar--search__input__items__list">
