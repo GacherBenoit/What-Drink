@@ -23,6 +23,7 @@ function App() {
   // SearchResult component to show result of the user's search with the cards
 
   const [recipes, setRecipes] = useState([]);
+  const [searchSend, setSearchSend] = useState('');
 
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
@@ -47,22 +48,19 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  // Get the value of the search submit by user
-  const handleSearchValue = () => {
-    const searchInputValue = document.getElementById('userSearch');
-    console.log(searchInputValue);
-    return searchInputValue.value;
-  };
-
   return (
     <div className="app">
-      <Nav recipes={recipes} handleSearchValue={handleSearchValue} />
+      <Nav
+        recipes={recipes}
+        searchSend={searchSend}
+        setSearchSend={setSearchSend}
+      />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cocktails" element={<Cocktails />} />
         <Route path="/tools&tips" element={<ToolsAndTips />} />
         <Route path="/whoweare" element={<WhoWeAre />} />
-        <Route path="/searchresult" element={<SearchResult recipes={recipes} currentSearch={handleSearchValue} />} />
+        <Route path="/searchresult" element={<SearchResult recipes={recipes} searchSend={searchSend} />} />
       </Routes>
       <Footer />
     </div>
@@ -70,7 +68,8 @@ function App() {
 }
 // Prop types for our Component
 App.defaultProps = {
-  handleSearchValue: PropTypes.func.isRequired,
+  searchSend: PropTypes.string.isRequired,
+  setSearchSend: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

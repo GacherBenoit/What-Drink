@@ -18,7 +18,8 @@ import icon from '../../assets/images/icon.png';
 function Search(
   {
     recipes,
-    handleSearchValue,
+    searchSend,
+    setSearchSend,
   },
 ) {
   // We define states for controlled field
@@ -68,7 +69,7 @@ function Search(
   // And get current user's search with handleSearchValue function
   const handleSubmit = () => {
     navigate('/searchresult');
-    handleSearchValue();
+    setSearchSend(search);
   };
 
   return (
@@ -130,7 +131,8 @@ function Search(
 // Prop types for our Component
 //
 Search.propTypes = {
-  handleSearchValue: PropTypes.func.isRequired,
+  searchSend: PropTypes.string.isRequired,
+  setSearchSend: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

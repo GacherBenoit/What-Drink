@@ -8,16 +8,15 @@ import PropTypes from 'prop-types';
 // Component
 import Card from '../Card/card';
 
-function SearchResult({ recipes, currentSearch }) {
-  // TAGADA
-  const userSearch = currentSearch();
+function SearchResult({ recipes, searchSend }) {
+  console.log(searchSend);
   return (
     <div className="searchResult">
       <div className="searchResult--header">
         <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
       </div>
       <section className="searchResult--cardList">
-        { recipes.filter((recipe) => recipe.strDrink.includes(userSearch))
+        { recipes.filter((recipe) => recipe.strDrink.includes(searchSend))
           .map((recipe) => (
             <Card
               key={recipe.idDrink}
@@ -30,7 +29,7 @@ function SearchResult({ recipes, currentSearch }) {
 }
 // Prop types for our Component
 SearchResult.propTypes = {
-  currentSearch: PropTypes.func.isRequired,
+  searchSend: PropTypes.string.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

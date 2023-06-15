@@ -19,7 +19,8 @@ import Search from '../Search/search';
 function Nav(
   {
     recipes,
-    handleSearchValue,
+    searchSend,
+    setSearchSend,
   },
 ) {
   const [toggle, setToggle] = useState(true);
@@ -43,13 +44,18 @@ function Nav(
           </div>
         </div>
       </nav>
-      <Search recipes={recipes} handleSearchValue={handleSearchValue} />
+      <Search
+        recipes={recipes}
+        searchSend={searchSend}
+        setSearchSend={setSearchSend}
+      />
     </div>
   );
 }
 // Prop types for our Component
 Nav.propTypes = {
-  handleSearchValue: PropTypes.func.isRequired,
+  searchSend: PropTypes.string.isRequired,
+  setSearchSend: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,
