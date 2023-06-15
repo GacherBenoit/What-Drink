@@ -18,8 +18,6 @@ import Search from '../Search/search';
 
 function Nav(
   {
-    search,
-    SetSearch,
     recipes,
   },
 ) {
@@ -44,17 +42,12 @@ function Nav(
           </div>
         </div>
       </nav>
-      <Search {...{
-        search, SetSearch, recipes,
-      }}
-      />
+      <Search recipes={recipes} />
     </div>
   );
 }
 // Prop types for our Component
 Nav.propTypes = {
-  search: PropTypes.string.isRequired,
-  SetSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

@@ -15,6 +15,7 @@ function SearchResult({ recipes }) {
         <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
       </div>
       <section className="searchResult--cardList">
+        <Card />
        {/*  {recipes.filter((recipe) => recipe.strDrink.includes(searchToMap)).map((recipe) => (
           <Card key={recipe.idDrink} />
         ))} */}

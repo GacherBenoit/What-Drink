@@ -17,18 +17,22 @@ import Cocktails from '../Cocktails/cocktail';
 import SearchResult from '../SearchResult/searchResult';
 
 function App() {
-  // We define states for controlled field and to recieve data at first parent of the Application
-  // And launch the useEffect to fetch data of recipes to access them into multiple components
+  // Welaunch the useEffect to fetch data of recipes to access them into multiple components
   // In this app , for Search and SearchResult components
   // Search component for the user's shearch and propositions
   // SearchResult component to show result of the user's search with the cards
 
-  const [search, SetSearch] = useState('');
   const [recipes, setRecipes] = useState([]);
 
   // Base URL for search by cocktail category because
   // we use free access and cant have the full list for the momment
   const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
+
+  // In response part, we iterate on every element on drink with map
+  // Extract the value of the property strDrink
+  // Make the letter convertion with different method toUpperCase & toLowerCase
+  // Use destructuring to create a new object, a copy of drink with the modified property strDrink
+  // And set the State with the new object
 
   useEffect(() => {
     axios.get(baseUrlforCocktailCategory)
@@ -43,14 +47,9 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  // In response part, we iterate on every element on drink with map
-  // Extract the value of the property strDrink
-  // Make the letter convertion with different method toUpperCase & toLowerCase
-  // Use destructuring to create a new object, a copy of drink with the modified property strDrink
-  // And set the State with the new object
   return (
     <div className="app">
-      <Nav search={search} SetSearch={SetSearch} recipes={recipes} />
+      <Nav recipes={recipes} />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cocktails" element={<Cocktails />} />
@@ -64,8 +63,6 @@ function App() {
 }
 // Prop types for our Component
 App.defaultProps = {
-  search: PropTypes.string.isRequired,
-  SetSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

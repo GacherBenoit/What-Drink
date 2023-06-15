@@ -3,7 +3,7 @@ import './search.scss';
 
 // Import NPM
 import {
-  React, useEffect,
+  React, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -17,11 +17,12 @@ import icon from '../../assets/images/icon.png';
 
 function Search(
   {
-    search,
-    SetSearch,
     recipes,
   },
 ) {
+  // We define states for controlled field
+  const [search, SetSearch] = useState('');
+
   const navigate = useNavigate();
 
   // OnChange we set the state and select the first letter (with .charAt) to transform it
@@ -123,8 +124,6 @@ function Search(
 // Prop types for our Component
 //
 Search.propTypes = {
-  search: PropTypes.string.isRequired,
-  SetSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,
