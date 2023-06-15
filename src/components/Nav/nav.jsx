@@ -19,6 +19,7 @@ import Search from '../Search/search';
 function Nav(
   {
     recipes,
+    handleSearchValue,
   },
 ) {
   const [toggle, setToggle] = useState(true);
@@ -42,12 +43,13 @@ function Nav(
           </div>
         </div>
       </nav>
-      <Search recipes={recipes} />
+      <Search recipes={recipes} handleSearchValue={handleSearchValue} />
     </div>
   );
 }
 // Prop types for our Component
 Nav.propTypes = {
+  handleSearchValue: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

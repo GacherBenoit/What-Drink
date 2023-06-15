@@ -7,14 +7,12 @@ import './card.scss';
 // Import Image
 import logoSeeMore from './../../assets/images/seemore.png';
 
-function Card() {
+function Card(recipe) {
   const [cardClicked, setCardClicked] = useState(false);
-
   const handleClickCard = () => {
     setCardClicked(!cardClicked);
-    console.log(cardClicked);
   };
-
+  const { strDrink, strDrinkThumb } = recipe;
   return (
     <div className="card">
       <div className="card--container">
@@ -26,9 +24,9 @@ function Card() {
               </button>
             </div>
           </div>
-          <img className={`card--container__element__image${cardClicked ? '__show' : ''}`} src="https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg" alt="" />
+          <img className={`card--container__element__image${cardClicked ? '__show' : ''}`} src={strDrinkThumb} alt="" />
           <div className={`card--container__element__image__bottom${cardClicked ? '__show' : ''}`}>
-            <p className="card--container__element__image__bottom__title">My cocktail</p>
+            <p className="card--container__element__image__bottom__title">{strDrink}</p>
           </div>
         </div>
       </div>

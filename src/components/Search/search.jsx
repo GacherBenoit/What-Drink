@@ -18,6 +18,7 @@ import icon from '../../assets/images/icon.png';
 function Search(
   {
     recipes,
+    handleSearchValue,
   },
 ) {
   // We define states for controlled field
@@ -64,9 +65,10 @@ function Search(
   }, [search]);
 
   // Function to redirect to the result page
-  // And save current user's serach with currentSearch function
+  // And get current user's search with handleSearchValue function
   const handleSubmit = () => {
     navigate('/searchresult');
+    handleSearchValue();
   };
 
   return (
@@ -78,13 +80,17 @@ function Search(
       </div>
       <div className="navbar--search__input">
         <div className="navbar--search__input__items">
-
+          {/* Mistake, we should have a form element and label but the input's behavior will be
+          different.For exemple: At suggestion selection in list, when user push entry key,
+          it will automacily submit the input.
+          That was not initially planned when we made the navigation function without form */}
           <input
-            id="search"
+            id="userSearch"
             className="navbar--search__input__field"
             type="texte"
             placeholder="Find a recipe..."
             value={search}
+            autoComplete="off"
             onChange={(evt) => handleSearchInput(evt)}
             onKeyDown={(evt) => keyboardNavigation(
               evt,
@@ -124,6 +130,7 @@ function Search(
 // Prop types for our Component
 //
 Search.propTypes = {
+  handleSearchValue: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

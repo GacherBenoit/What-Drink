@@ -47,15 +47,22 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  // Get the value of the search submit by user
+  const handleSearchValue = () => {
+    const searchInputValue = document.getElementById('userSearch');
+    console.log(searchInputValue);
+    return searchInputValue.value;
+  };
+
   return (
     <div className="app">
-      <Nav recipes={recipes} />
+      <Nav recipes={recipes} handleSearchValue={handleSearchValue} />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cocktails" element={<Cocktails />} />
         <Route path="/tools&tips" element={<ToolsAndTips />} />
         <Route path="/whoweare" element={<WhoWeAre />} />
-        <Route path="/searchresult" element={<SearchResult recipes={recipes} />} />
+        <Route path="/searchresult" element={<SearchResult recipes={recipes} currentSearch={handleSearchValue} />} />
       </Routes>
       <Footer />
     </div>
@@ -63,6 +70,7 @@ function App() {
 }
 // Prop types for our Component
 App.defaultProps = {
+  handleSearchValue: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,
