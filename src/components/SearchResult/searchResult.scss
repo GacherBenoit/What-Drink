@@ -7,11 +7,44 @@
         text-align: center;
     }
     
-    &--cardList{
+    &--cardlist{
        /*  background-color: aquamarine; */ 
         height: 85vh;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        overflow: hidden;
+        
+        &__arrows{
+
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+            bottom: 76px;
+
+            &__left{
+
+               &__button{
+
+                background-color: white;
+
+                &__image{
+                    width: 50px;
+                    transform: rotate(180deg);
+                }
+               }
+            }
+            &__right{
+
+               &__button{
+
+                background-color: white;
+
+                &__image{
+                    width: 50px;
+                }
+               }
+            }
+        }
     }
 }
