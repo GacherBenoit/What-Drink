@@ -2,7 +2,7 @@
 import './searchResult.scss';
 
 // import NPM
-import { React, useEffect } from 'react';
+import { React, useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // Component
@@ -12,45 +12,28 @@ import Card from '../Card/card';
 import Arrow from '../../assets/images/arrow.png';
 
 function SearchResult({ recipes, searchSend }) {
-  //
-  // current position in slider
-  let currentPosition = 0;
+  // Change the currentCard index to switch current class
+  const [cardIndex, setCardIndex] = useState(0);
 
-  // Current card
-  // We use useEffect to initialize the 'current' class to card
-  // at every search send by user with searchSend state in parameter
-  let cards = document.getElementsByClassName('card');
-
-  useEffect(() => {
-    if (cards.length > 0) {
-      const currentCard = cards[currentPosition];
-      currentCard.classList.add('current');
-    }
-  }, [searchSend]);
-
-  // Check Position
-  const checkPosition = () => {
-    if (currentPosition === -1) {
-      currentPosition = cards.length - 1;
-    } else if (currentPosition === cards.length) {
-      currentPosition = 0;
-    }
-  };
+  // The recipes filtered by search send by user
+  const filteredSearch = recipes.filter((recipe) => recipe.strDrink.includes(searchSend));
+ /*  console.log(filteredSearch.length); */
 
   // OnClick left
   const handleLeftClick = () => {
-    cards[currentPosition].classList.remove('current');
-    currentPosition -= 1;
-    checkPosition();
-    cards[currentPosition].classList.add('current');
+    setCardIndex(cardIndex - 1);
+    if (cardIndex === 0) {
+      setCardIndex(filteredSearch.length - 1);
+    }
+    console.log(cardIndex);
   };
 
   // Onclick right
   const handleRightClick = () => {
-    cards[currentPosition].classList.remove('current');
-    currentPosition += 1;
-    checkPosition();
-    cards[currentPosition].classList.add('current');
+    setCardIndex(cardIndex + 1);
+    if (cardIndex === filteredSearch.length - 1) {
+      setCardIndex(0);
+    }
   };
 
   return (
@@ -59,13 +42,14 @@ function SearchResult({ recipes, searchSend }) {
         <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
       </div>
       <section className="searchResult--cardlist">
-        { recipes.filter((recipe) => recipe.strDrink.includes(searchSend))
-          .map((recipe) => (
-            <Card
-              key={recipe.idDrink}
-              {...recipe}
-            />
-          ))}
+        {filteredSearch.map((recipe, index) => (
+          <Card
+            index={index}
+            key={recipe.idDrink}
+            className={index === cardIndex ? 'current' : 'card'}
+            {...recipe}
+          />
+        ))}
       </section>
       <div className="searchResult--cardlist__arrows">
         <button type="button" label="previous recipe" className="searchResult--cardlist__arrows__left__button" onClick={handleLeftClick}>

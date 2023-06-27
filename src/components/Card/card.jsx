@@ -1,5 +1,6 @@
 // Import NPM
 import { React, useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Import CSS
 import './card.scss';
@@ -7,14 +8,15 @@ import './card.scss';
 // Import Image
 import logoSeeMore from './../../assets/images/seemore.png';
 
-function Card(recipe) {
+function Card({ className, ...recipe }) {
   const [cardClicked, setCardClicked] = useState(false);
   const handleClickCard = () => {
     setCardClicked(!cardClicked);
   };
   const { strDrink, strDrinkThumb } = recipe;
+
   return (
-    <div className="card">
+    <div className={className}>
       <div className="card--container">
         <div className="card--container__element">
           <div className="card--container__element__link">
@@ -35,3 +37,7 @@ function Card(recipe) {
 }
 
 export default Card;
+
+Card.propTypes = {
+  className: PropTypes.string.isRequired,
+};

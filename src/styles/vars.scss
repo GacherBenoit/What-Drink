@@ -96,7 +96,7 @@ moz-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.35);}
 // - Number of cards to show , the others will disapear will the overflow hidden in the searchResult Slider.scss
 // - The gap horizontal / vertical and the margin left / right to center cards and set space between them.
 
-@mixin slider-rules($cardToShow:3,$horizontal-gap: -280px, $vertical-gap:12px, $cardsMargin: 40px 40px){
+@mixin slider-rules($cardToShow:7,$horizontal-gap: -280px, $vertical-gap:12px, $cardsMargin: 40px 40px){
 
   @for $i from 0 through $cardToShow {
     .card:nth-child(#{$i}) {

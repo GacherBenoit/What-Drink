@@ -177,5 +177,21 @@
     }
 }
 
-  
+.current {
+
+    width: 225px;
+    height: 400px;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: relative;
+    @include vars.card-boxShadow();
+    z-index: -1;
+    /* left: -280px; */
+   /*  bottom: 12px; */
+    margin: 40px 40px;
+}  
                     
