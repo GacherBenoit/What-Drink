@@ -19,6 +19,11 @@ function SearchResult({ recipes, searchSend }) {
   const filteredSearch = recipes.filter((recipe) => recipe.strDrink.includes(searchSend));
  /*  console.log(filteredSearch.length); */
 
+  // Reset the current card index if user's search change
+  useEffect(() => {
+    setCardIndex(0);
+  }, [searchSend]);
+
   // OnClick left
   const handleLeftClick = () => {
     setCardIndex(cardIndex - 1);
