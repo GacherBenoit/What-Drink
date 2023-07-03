@@ -61,6 +61,8 @@
             }
         }
     }
+
+    //////////////////////////////////////////////// CURRENT CARD MEDIA QUERIES FOR SLIDER /////////////
 }
 @media screen and (min-width: 375px) {
     .searchResult{
@@ -81,5 +83,23 @@
         &--cardlist{
             padding: 60px;
         }      
+    } 
+   }   
+   @media screen and (min-width: 1024px) {
+    .searchResult{
+        &--header{
+            padding-top: 120px;
+        }   
+        &--cardlist{
+            
+            flex-wrap: wrap;
+
+            &__current{
+                position:inherit;
+                height: initial;
+                z-index: inherit;
+                width: inherit;
+            }
+        }
     } 
    }   

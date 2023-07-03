@@ -181,6 +181,9 @@
 ///////////////////////////////////                                   ///////////////
 //////////////////////////////////// SLIDER  CONFIG  MEDIA QUERIES  /////////////////
 
+@include vars.hiddenCardForMobile;
+@include vars.hiddenCardForDesktop;
+
 .current { // Current class Card on first plan
     left: 45px;
     top: 113px;
@@ -200,9 +203,6 @@
     }
   }
 
-  // Deck of cards , limit of card to show in param
-  @include vars.hiddenCard(7);
-
 @media screen and (min-width: 375px) {
     .card{
         margin-right: -205px;
@@ -211,6 +211,7 @@
     .current{
         left: 70px;
     }
+  
    }
 
    @media screen and (min-width: 425px) {
@@ -246,3 +247,19 @@
     }
    
    }
+   @media screen and (min-width:1024px) {
+    .card{
+        margin-right: inherit;
+        z-index: inherit;
+        opacity: 1;
+        
+    }
+    .current{
+        left: inherit;
+        top: inherit;
+        z-index: inherit;
+        animation: scaleAnimation none;
+    }
+   }
+
+  
