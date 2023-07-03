@@ -178,21 +178,71 @@
         }
     }
 }
+///////////////////////////////////                                   ///////////////
+//////////////////////////////////// SLIDER  CONFIG  MEDIA QUERIES  /////////////////
 
-.current { // Current Card on first plan
-    left: 55px;
+.current { // Current class Card on first plan
+    left: 45px;
     top: 113px;
-    animation: scaleAnimation 1s forwards;
+    animation: scaleAnimation 0.7s forwards;
 }
 
 @keyframes scaleAnimation {
     0% {
       transform: scale(1);
     }
+    50% {
+        transform: scale(1.07);
+        transform: translate(-400px);
+      }
     100% {
       transform: scale(1.15);
     }
   }
 
   // Deck of cards , limit of card to show in param
-@include vars.hiddenCard(7);
+  @include vars.hiddenCard(7);
+
+@media screen and (min-width: 375px) {
+    .card{
+        margin-right: -205px;
+        
+    }
+    .current{
+        left: 70px;
+    }
+   }
+
+   @media screen and (min-width: 425px) {
+    .card{
+        margin-right: -210px;
+        
+    }
+    .current{
+        left: 75px;
+        top: 94px;
+    }
+    @keyframes scaleAnimation {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+            transform: scale(1.07);
+            transform: translate(-400px);
+          }
+        100% {
+          transform: scale(1.25);
+        }
+      }
+   }
+   @media screen and (min-width: 768px) {
+    .card{
+        margin-right: -190px;
+        
+    }
+    .current{
+        left: 210px;
+        top: 120px;
+    }
+   
+   }

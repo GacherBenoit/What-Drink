@@ -17,6 +17,7 @@
         display: flex;
         align-items: center;
         overflow: hidden;
+        padding: 10px;
        
 
         &__current{
@@ -61,3 +62,24 @@
         }
     }
 }
+@media screen and (min-width: 375px) {
+    .searchResult{
+        &--cardlist{
+            padding: 30px;
+        }      
+    } 
+   }
+   @media screen and (min-width: 425px) {
+    .searchResult{
+        &--cardlist{
+            padding: 40px;
+        }      
+    } 
+   }   
+   @media screen and (min-width: 768px) {
+    .searchResult{
+        &--cardlist{
+            padding: 60px;
+        }      
+    } 
+   }   
