@@ -48,12 +48,23 @@ function SearchResult({ recipes, searchSend }) {
       </div>
       <section className="searchResult--cardlist">
         {filteredSearch.map((recipe, index) => (
-          <Card
-            index={index}
-            key={recipe.idDrink}
-            className={index === cardIndex ? 'current' : 'card'}
-            {...recipe}
-          />
+          index === cardIndex ? (
+            <div key={`current-${recipe.idDrink}`} className="searchResult--cardlist__current">
+              <Card
+                key={recipe.idDrink}
+                index={index}
+                className="card current"
+                {...recipe}
+              />
+            </div>
+          ) : (
+            <Card
+              key={recipe.idDrink}
+              index={index}
+              className="card"
+              {...recipe}
+            />
+          )
         ))}
       </section>
       <div className="searchResult--cardlist__arrows">

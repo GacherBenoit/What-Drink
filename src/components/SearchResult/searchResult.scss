@@ -17,6 +17,16 @@
         display: flex;
         align-items: center;
         overflow: hidden;
+       
+
+        &__current{
+
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            z-index: 1;
+           
+        }
         
         &__arrows{
 
@@ -50,20 +60,4 @@
             }
         }
     }
-}
-
- @include vars.slider-rules();
-
- @media only screen and (min-width: 375px){
-
-    @include vars.slider-rules(4,-280px,12px, 45px 45px);
-}
-
-@media only screen and (min-width: 425px){
-
-    @include vars.slider-rules(5,-280px,12px, 46px 46px);
-}
-@media only screen and (min-width: 768px){
-
-    @include vars.slider-rules(5,-700px,28px, 50px 250px);
 }
