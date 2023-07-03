@@ -12,6 +12,7 @@ function Card({ className, ...recipe }) {
   const [cardClicked, setCardClicked] = useState(false);
   const handleClickCard = () => {
     setCardClicked(!cardClicked);
+    console.log(cardClicked);
   };
   const { strDrink, strDrinkThumb } = recipe;
 

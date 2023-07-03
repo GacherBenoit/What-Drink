@@ -47,7 +47,7 @@ function SearchResult({ recipes, searchSend }) {
         <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
       </div>
       <section className="searchResult--cardlist">
-        {filteredSearch.map((recipe, index) => (
+        {filteredSearch.slice(0, 24).map((recipe, index) => (
           index === cardIndex ? (
             <div key={`current-${recipe.idDrink}`} className="searchResult--cardlist__current">
               <Card

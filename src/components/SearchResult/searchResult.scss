@@ -85,20 +85,38 @@
         }      
     } 
    }   
-   @media screen and (min-width: 1024px) {
+   @media screen and (min-width: 900px) {
     .searchResult{
+
+        height: fit-content;
+        
         &--header{
+
             padding-top: 120px;
+        
         }   
+
         &--cardlist{
-            
+
+            height: inherit;
             flex-wrap: wrap;
+            padding: 5px;
+            justify-content: flex-start;
+            
+
+            &__arrows{
+
+            visibility: hidden;
+
+            }
 
             &__current{
+
                 position:inherit;
                 height: initial;
                 z-index: inherit;
                 width: inherit;
+
             }
         }
     } 
