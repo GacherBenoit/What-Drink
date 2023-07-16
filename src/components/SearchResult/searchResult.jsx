@@ -12,6 +12,7 @@ import Card from '../Card/card';
 import Arrow from '../../assets/images/arrow.png';
 
 function SearchResult({ recipes, searchSend }) {
+  const [cardClicked, setCardClicked] = useState(null);
   // Change the currentCard index to switch current class
   const [cardIndex, setCardIndex] = useState(0);
 
@@ -26,19 +27,21 @@ function SearchResult({ recipes, searchSend }) {
 
   // OnClick left
   const handleLeftClick = () => {
-    setCardIndex(cardIndex - 1);
     if (cardIndex === 0) {
       setCardIndex(filteredSearch.length - 1);
-    }
-    console.log(cardIndex);
+    } else setCardIndex(cardIndex - 1);
   };
 
   // Onclick right
   const handleRightClick = () => {
-    setCardIndex(cardIndex + 1);
     if (cardIndex === filteredSearch.length - 1) {
       setCardIndex(0);
-    }
+    } else setCardIndex(cardIndex + 1);
+  };
+
+  const handleClickCard = (index) => {
+    console.log('clicked');
+    console.log(index);
   };
 
   return (
@@ -54,6 +57,8 @@ function SearchResult({ recipes, searchSend }) {
                 key={recipe.idDrink}
                 index={index}
                 className="card current"
+                handleClickCard={handleClickCard}
+                cardClicked={cardClicked}
                 {...recipe}
               />
             </div>
@@ -62,6 +67,8 @@ function SearchResult({ recipes, searchSend }) {
               key={recipe.idDrink}
               index={index}
               className="card"
+              handleClickCard={handleClickCard}
+              cardClicked={cardClicked}
               {...recipe}
             />
           )

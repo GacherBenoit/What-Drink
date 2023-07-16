@@ -8,12 +8,12 @@ import './card.scss';
 // Import Image
 import logoSeeMore from './../../assets/images/seemore.png';
 
-function Card({ className, ...recipe }) {
-  const [cardClicked, setCardClicked] = useState(false);
-  const handleClickCard = () => {
+function Card({ className, index, cardClicked, handleClickCard, ...recipe }) {
+ /*  const [cardClicked, setCardClicked] = useState(false); */
+ /*  const handleClickCard = () => {
     setCardClicked(!cardClicked);
     console.log(cardClicked);
-  };
+  }; */
   const { strDrink, strDrinkThumb } = recipe;
 
   return (
@@ -22,7 +22,7 @@ function Card({ className, ...recipe }) {
         <div className="card--container__element">
           <div className="card--container__element__link">
             <div className={`card--container__element__link__content${cardClicked ? '__show' : ''}`}>
-              <button type="button" className="card--container__element__link__content__button" onClick={(handleClickCard)}>
+              <button type="button" className="card--container__element__link__content__button" onClick={() => handleClickCard(index)}>
                 <img className={`card--container__element__link__content__logo${cardClicked ? '__show' : ''}`} alt="see full recipe" src={logoSeeMore} />
               </button>
             </div>
@@ -41,4 +41,7 @@ export default Card;
 
 Card.propTypes = {
   className: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  cardClicked: PropTypes.bool.isRequired,
+  handleClickCard: PropTypes.func.isRequired,
 };
