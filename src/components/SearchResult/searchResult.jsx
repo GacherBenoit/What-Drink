@@ -17,10 +17,11 @@ function SearchResult({ recipes, searchSend }) {
   const [cardIndex, setCardIndex] = useState(0);
 
   // The recipes filtered by search send by user
-  const filteredSearch = recipes.slice(0,24).filter((recipe) => recipe.strDrink.includes(searchSend));
+  const filteredSearch = recipes.filter((recipe) => recipe.strDrink.includes(searchSend)).slice(0,24);
  /*  console.log(filteredSearch.length); */
   console.log(cardIndex);
   console.log(filteredSearch.length);
+  console.log(filteredSearch);
   // Reset the current card index if user's search change
   useEffect(() => {
     setCardIndex(0);
