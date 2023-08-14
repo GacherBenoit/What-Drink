@@ -1,0 +1,26 @@
+@use 'reset';
+@use 'vars';
+
+
+body {
+font-family: vars.$main-font;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  font-size: 20px;
+  // Trick for margin problem in low resolution mobile https://developer.mozilla.org/fr/docs/Web/CSS/overflow-x 
+  /* overflow-x:auto; */
+}
+@media screen and (min-width: 768px) {
+  #root {
+    font-size: 24px;
+  }
+  }
+
+  @media screen and (min-width: 1400px) {
+    #root {
+      font-size: 36px;
+    }
+    }

@@ -1,0 +1,203 @@
+
+
+.navbar--search{
+
+    position: absolute;
+
+    &__checkbox{
+
+        position: absolute;
+        width: 38px;
+        height: 53px;
+        right: 45px;
+        z-index: 2;
+        opacity: 0;
+        top: -60px;
+    }
+
+
+    &__glass__image{
+        position: absolute;
+        top: -43px;
+        width: 28px;
+        transition: opacity 0.3s, transform 0.3s;
+        right: 60px;
+    }
+    &__drink__image{
+        opacity: 0;
+        position: absolute;
+        top: -52px;
+        right: 60px;
+        width: 36px;
+        transition: opacity .3s, transform 0.3s;
+    }
+
+    &__input{
+
+        width: 100vw;
+        text-align: center;
+        transform: translate(-150%);
+        transition: transform 0.5s ease-in-out;
+        position: relative;
+        top: -45px;
+
+        &__items{
+
+               
+            max-width: min-content;
+            position: relative;
+            left: 24px;
+
+                &__list{
+              
+                background-color: white;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                font-size: 0.9em;
+                margin-top: -8px;
+                transition: opacity 2s, height 2s; // For transition animation to be smoother
+            
+                &__element:first-child{
+
+                    padding-top: 22px;
+                }
+            }
+
+            &__button{
+
+                position: absolute;
+                right: 8px;
+                top: 5px;
+                background-color: white;
+                height: 25px;
+            }
+
+            &__image{
+
+                width: 24px;
+            }
+        }
+        
+        &__field{
+
+            border-radius: 11px;
+            width: 200px;
+            height: 32px;
+            border: solid 2px white;
+            position: relative;
+            
+        }
+        
+       
+    }
+}
+
+.highLight{
+    background-color:rgb(82, 82, 211);
+}
+
+.navbar--search [type="checkbox"]:checked ~ .navbar--search__input {
+   
+    transform: translateX(0);
+    
+}
+.navbar--search [type="checkbox"]:checked ~ .navbar--search__icon .navbar--search__glass__image {
+   
+    transition: opacity .3s, transform .3s;
+    transform: rotate(-180deg) scale(.5);
+    opacity: 0;
+    
+}
+.navbar--search [type="checkbox"]:checked ~ .navbar--search__icon .navbar--search__drink__image {
+    
+    transition: opacity .3s, transform .3s;
+    transform: rotate(-360deg) scale(1);
+	opacity: 1;
+    
+}
+// When the user select a suggestion in the search bar , the fiels is not focus. So we set opacity to 0 to hide the list of suggestion.
+.navbar--search__input__field:not(:focus) ~ .navbar--search__input__items__list{
+     opacity: 0;
+ }
+
+ .hidden-effect{
+    
+    transition: opacity 1.5s, height 1.5s;
+    opacity: 0;
+ }
+// Media Queries
+
+@media screen and (min-width: 420px) {
+
+    .navbar--search__input{
+   
+     display: flex;
+     justify-content: center;
+   
+    }
+}
+@media only screen and (min-width: 768px){
+
+    .navbar--search__input__field{
+
+        width: 400px;
+    }
+
+
+}
+@media only screen and (min-width: 900px){
+
+    .navbar--search{
+
+        &__input{
+
+           transform: translate(0%);
+           top: -45px;
+
+           &__items{
+  
+            justify-content: center;
+            margin-right: 0px;
+
+            &__button{
+
+                position: absolute;
+                right: 1px;
+                background-color: orange;
+                height: 30px;
+                border-radius: 9px;
+                width: 72px;
+                border: solid 2px white;
+                top: 1px;
+            }
+            &__image{
+
+                width: 23px;
+                position: relative;
+                top: 2px;
+                right: 1px;
+            }
+          }
+          
+           }
+           &__checkbox{
+
+            display: none;
+          }
+  
+          &__icon{
+  
+            display: none;
+          }
+  
+            
+        }
+        
+    }
+    @media screen and (min-width: 1400px) {
+
+        .navbar--search__input__items__button{
+
+            top: 0;
+        }
+        }
