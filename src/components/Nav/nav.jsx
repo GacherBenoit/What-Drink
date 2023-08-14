@@ -2,7 +2,8 @@
 import './nav.scss';
 
 // Import NPM
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 // Import Image
@@ -12,13 +13,22 @@ import logo from '../../assets/images/Logo-01.png';
 // Import Components
 import Search from '../Search/search';
 
-function Nav() {
+// LinterRules
+/* eslint-disable jsx-a11y/control-has-associated-label */
+
+function Nav(
+  {
+    recipes,
+    searchSend,
+    setSearchSend,
+  },
+) {
   const [toggle, setToggle] = useState(true);
   return (
     <div className="navbar">
       <nav>
         <div className="navbar--burger__menu">
-          <button className="navbar--burger__menu__button" type='button' onClick={()=> setToggle(!toggle)} />
+          <button className="navbar--burger__menu__button" type="button" onClick={() => setToggle(!toggle)} />
           <div className="navbar--burger__menu__lines">
             <span className={toggle ? 'navbar--burger__menu__lines__one' : 'navbar--burger__menu__lines__one__open'} />
             <span className={toggle ? 'navbar--burger__menu__lines__two' : 'navbar--burger__menu__lines__two__open'} />
@@ -34,9 +44,24 @@ function Nav() {
           </div>
         </div>
       </nav>
-      <Search />
+      <Search
+        recipes={recipes}
+        searchSend={searchSend}
+        setSearchSend={setSearchSend}
+      />
     </div>
   );
 }
-
+// Prop types for our Component
+Nav.propTypes = {
+  searchSend: PropTypes.string.isRequired,
+  setSearchSend: PropTypes.func.isRequired,
+  recipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.string.isRequired,
+      strDrink: PropTypes.string.isRequired,
+      strDrinkThumb: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 export default Nav;

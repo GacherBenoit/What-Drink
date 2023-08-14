@@ -1,4 +1,123 @@
+@use '../../styles/vars.scss';
+
 .searchResult {
-    padding-top: 60px;
     height: 100vh;
+    /* background-color: #4c88bd; */
+    
+    &--header{
+        padding-top: 100px;
+        text-align: center;
+    }
+    
+    &--cardlist{
+       //We set index to 0 to have the suggestion list foward to the cards
+       position: relative;
+       z-index: 0;
+        height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 10px;
+       
+
+        &__current{
+
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            z-index: 1;
+           
+        }
+        
+        &__arrows{
+
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+            bottom: 76px;
+
+            &__left{
+
+               &__button{
+
+                background-color: white;
+
+                &__image{
+                    width: 50px;
+                    transform: rotate(180deg);
+                }
+               }
+            }
+            &__right{
+
+               &__button{
+
+                background-color: white;
+
+                &__image{
+                    width: 50px;
+                }
+               }
+            }
+        }
+    }
+
+    //////////////////////////////////////////////// CURRENT CARD MEDIA QUERIES FOR SLIDER /////////////
 }
+@media screen and (min-width: 375px) {
+    .searchResult{
+        &--cardlist{
+            padding: 30px;
+        }      
+    } 
+   }
+   @media screen and (min-width: 425px) {
+    .searchResult{
+        &--cardlist{
+            padding: 40px;
+        }      
+    } 
+   }   
+   @media screen and (min-width: 768px) {
+    .searchResult{
+        &--cardlist{
+            padding: 60px;
+        }      
+    } 
+   }   
+   @media screen and (min-width: 900px) {
+    .searchResult{
+
+        height: fit-content;
+        
+        &--header{
+
+            padding-top: 120px;
+        
+        }   
+
+        &--cardlist{
+
+            height: inherit;
+            flex-wrap: wrap;
+            padding: 5px;
+            justify-content: flex-start;
+            
+
+            &__arrows{
+
+            visibility: hidden;
+
+            }
+
+            &__current{
+
+                position:inherit;
+                height: initial;
+                z-index: inherit;
+                width: inherit;
+
+            }
+        }
+    } 
+   }   

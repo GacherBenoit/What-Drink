@@ -3,10 +3,10 @@ import './search.scss';
 
 // Import NPM
 import {
-  React, useState, useEffect,
+  React, useEffect, useState,
 } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 // Function
 import keyboardNavigation, { navigationPosition, listElement } from './keyboardNavigation';
@@ -15,40 +15,24 @@ import keyboardNavigation, { navigationPosition, listElement } from './keyboardN
 import glass from '../../assets/images/glass.png';
 import icon from '../../assets/images/icon.png';
 
-function Search() {
+function Search(
+  {
+    recipes,
+    searchSend,
+    setSearchSend,
+  },
+) {
+  // We define states for controlled field
   const [search, SetSearch] = useState('');
-  const [recipes, setRecipes] = useState([]);
+
   const navigate = useNavigate();
-
-  // Base URL for search by cocktail category because
-  // we use free access and cant have the full list for the momment
-  const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
-
-  // In response part, we iterate on every element on drink with map
-  // Extract the value of the property strDrink
-  // Make the letter convertion with different method toUpperCase & toLowerCase
-  // Use destructuring to create a new object, a copy of drink with the modified property strDrink
-  // And set the State with the new object
-  useEffect(() => {
-    axios.get(baseUrlforCocktailCategory)
-      .then((response) => {
-        const modifiedDrinks = response.data.drinks.map(drink => {
-          const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase() + drink.strDrink.slice(1).toLowerCase();
-          return { ...drink, strDrink: capitalizedDrink };
-        });
-        setRecipes(modifiedDrinks);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const handleSearchInput = (evt) => {
-    SetSearch(evt.target.value.charAt(0).toUpperCase()
-            + evt.target.value.slice(1).toLowerCase());
-            console.log('le champ est modifié');
 
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
+  const handleSearchInput = (evt) => {
+    SetSearch(evt.target.value.charAt(0).toUpperCase()
+            + evt.target.value.slice(1).toLowerCase());
   };
 
   // Function to check proposition
@@ -70,7 +54,7 @@ function Search() {
   };
 
   // On every change of input (search state), we set the position to -1
-  // We convert our array (type HTML Collection) to array and browse it to remove the highlight class
+  // We convert array (type HTML Collection) to array and browse it to remove the highlight class
   // In fact , at every proposition's change the current selection is set to reboot and disapear
   useEffect(() => {
     navigationPosition.current = -1;
@@ -82,11 +66,12 @@ function Search() {
   }, [search]);
 
   // Function to redirect to the result page
+  // And get current user's search with handleSearchValue function
   const handleSubmit = () => {
     navigate('/searchresult');
+    setSearchSend(search);
   };
 
-  
   return (
     <div className="navbar--search">
       <input className="navbar--search__checkbox" type="checkbox" />
@@ -96,12 +81,17 @@ function Search() {
       </div>
       <div className="navbar--search__input">
         <div className="navbar--search__input__items">
-
+          {/* Mistake, we should have a form element and label but the input's behavior will be
+          different.For exemple: At suggestion selection in list, when user push entry key,
+          it will automacily submit the input.
+          That was not initially planned when we made the navigation function without form */}
           <input
+            id="userSearch"
             className="navbar--search__input__field"
             type="texte"
             placeholder="Find a recipe..."
             value={search}
+            autoComplete="off"
             onChange={(evt) => handleSearchInput(evt)}
             onKeyDown={(evt) => keyboardNavigation(
               evt,
@@ -116,7 +106,7 @@ function Search() {
           </button>
           <ul className="navbar--search__input__items__list">
 
-           {/* If search input isnt empty and recipes(data from API) isnt empty too
+            {/* If search input isnt empty and recipes(data from API) isnt empty too
              (to recieve data from API) ,the filter function is functionnal */}
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
               .map((recipe) => (
@@ -138,11 +128,17 @@ function Search() {
     </div>
   );
 }
-
+// Prop types for our Component
+//
+Search.propTypes = {
+  searchSend: PropTypes.string.isRequired,
+  setSearchSend: PropTypes.func.isRequired,
+  recipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.string.isRequired,
+      strDrink: PropTypes.string.isRequired,
+      strDrinkThumb: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 export default Search;
-
-
-// Objectif 2 A Chaque changement du tableau filtré : 
-// - executer une fonction quand il ne reste qu'une proposition égale a la valeur du champ
-// - selectionner la proposition restante
-// - la cacher                                                   
