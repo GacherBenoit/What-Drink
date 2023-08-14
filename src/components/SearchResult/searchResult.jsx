@@ -2,7 +2,9 @@
 import './searchResult.scss';
 
 // import NPM
-import { React, useState, useRef, useEffect } from 'react';
+import {
+  React, useState, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 
 // Component
@@ -12,16 +14,16 @@ import Card from '../Card/card';
 import Arrow from '../../assets/images/arrow.png';
 
 function SearchResult({ recipes, searchSend }) {
-  const [cardClicked, setCardClicked] = useState(null);
+  // We define state to set if card is opened and wich one.
+  const [cardClicked, setCardClicked] = useState({ clicked: false, index: 0 });
   // Change the currentCard index to switch current class
   const [cardIndex, setCardIndex] = useState(0);
 
   // The recipes filtered by search send by user
-  const filteredSearch = recipes.filter((recipe) => recipe.strDrink.includes(searchSend)).slice(0,24);
- /*  console.log(filteredSearch.length); */
-  console.log(cardIndex);
-  console.log(filteredSearch.length);
-  console.log(filteredSearch);
+  const filteredSearch = recipes.filter(
+    (recipe) => recipe.strDrink.includes(searchSend),
+  ).slice(0, 24);
+
   // Reset the current card index if user's search change
   useEffect(() => {
     setCardIndex(0);
@@ -42,8 +44,12 @@ function SearchResult({ recipes, searchSend }) {
   };
 
   const handleClickCard = (index) => {
-    console.log('clicked');
-    console.log(index);
+    setCardClicked((prevState) => ({
+      ...prevState,
+      clicked: !prevState.clicked, // Inversion of 'clicked' property
+      // eslint-disable-next-line object-shorthand
+      index: index, // Update the index property
+    }));
   };
 
   return (
@@ -61,6 +67,7 @@ function SearchResult({ recipes, searchSend }) {
                 className="card current"
                 handleClickCard={handleClickCard}
                 cardClicked={cardClicked}
+                setCardClicked={setCardClicked}
                 {...recipe}
               />
             </div>
@@ -71,6 +78,7 @@ function SearchResult({ recipes, searchSend }) {
               className="card"
               handleClickCard={handleClickCard}
               cardClicked={cardClicked}
+              setCardClicked={setCardClicked}
               {...recipe}
             />
           )
@@ -90,6 +98,11 @@ function SearchResult({ recipes, searchSend }) {
 // Prop types for our Component
 SearchResult.propTypes = {
   searchSend: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  cardClicked: PropTypes.shape({
+    clicked: PropTypes.bool.isRequired,
+    index: PropTypes.number.isRequired,
+  }),
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,
@@ -98,4 +111,10 @@ SearchResult.propTypes = {
     }),
   ).isRequired,
 };
+
+SearchResult.defaultProps = {
+  className: '', // Default value for className
+  cardClicked: { clicked: false, index: 0 }, // Default value for cardClicked
+};
+
 export default SearchResult;
