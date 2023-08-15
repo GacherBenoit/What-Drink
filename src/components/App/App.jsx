@@ -39,7 +39,6 @@ function App() {
   // Use destructuring to create a new object, a copy of drink with the modified property strDrink
   // And set the State with the new object
   useEffect(() => {
-    console.log('call API');
     axios.get(baseUrlforCocktailCategory)
       .then((response) => {
         const modifiedDrinks = response.data.drinks.map((drink) => {

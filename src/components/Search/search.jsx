@@ -3,7 +3,7 @@ import './search.scss';
 
 // Import NPM
 import {
-  React, useEffect, useState,
+  React, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';

@@ -3,7 +3,7 @@ import './searchResult.scss';
 
 // import NPM
 import {
-  React, useState, useEffect, useRef,
+  React, useState, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -76,6 +76,7 @@ function SearchResult({ recipes, searchSend }) {
                 handleClickCard={handleClickCard}
                 cardClicked={cardClicked}
                 setCardClicked={setCardClicked}
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...recipe}
               />
             </div>
@@ -87,6 +88,7 @@ function SearchResult({ recipes, searchSend }) {
               handleClickCard={handleClickCard}
               cardClicked={cardClicked}
               setCardClicked={setCardClicked}
+               // eslint-disable-next-line react/jsx-props-no-spreading
               {...recipe}
             />
           )
