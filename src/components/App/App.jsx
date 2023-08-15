@@ -17,25 +17,29 @@ import Cocktails from '../Cocktails/cocktail';
 import SearchResult from '../SearchResult/searchResult';
 
 function App() {
+  // State to register all the recipe send by API
+  const [recipes, setRecipes] = useState([]);
+
+  // State to register search send by input
+  // We use it to not re-render cards at every change of the controlled field
+  const [searchSend, setSearchSend] = useState('');
+
+  // We define states for controlled field
+  const [search, setSearch] = useState('');
+
   // Welaunch the useEffect to fetch data of recipes to access them into multiple components
   // In this app , for Search and SearchResult components
   // Search component for the user's shearch and propositions
   // SearchResult component to show result of the user's search with the cards
-
-  const [recipes, setRecipes] = useState([]);
-  const [searchSend, setSearchSend] = useState('');
-
-  // Base URL for search by cocktail category because
-  // we use free access and cant have the full list for the momment
-  const baseUrlforCocktailCategory = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
+  const baseUrlforCocktailCategory = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
 
   // In response part, we iterate on every element on drink with map
   // Extract the value of the property strDrink
   // Make the letter convertion with different method toUpperCase & toLowerCase
   // Use destructuring to create a new object, a copy of drink with the modified property strDrink
   // And set the State with the new object
-
   useEffect(() => {
+    console.log('call API');
     axios.get(baseUrlforCocktailCategory)
       .then((response) => {
         const modifiedDrinks = response.data.drinks.map((drink) => {
@@ -46,7 +50,7 @@ function App() {
         setRecipes(modifiedDrinks);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [search]);
 
   return (
     <div className="app">
@@ -54,13 +58,15 @@ function App() {
         recipes={recipes}
         searchSend={searchSend}
         setSearchSend={setSearchSend}
+        search={search}
+        setSearch={setSearch}
       />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cocktails" element={<Cocktails />} />
         <Route path="/tools&tips" element={<ToolsAndTips />} />
         <Route path="/whoweare" element={<WhoWeAre />} />
-        <Route path="/searchresult" element={<SearchResult recipes={recipes} searchSend={searchSend} />} />
+        <Route path="/searchresult" element={<SearchResult recipes={recipes} searchSend={searchSend} search={search} />} />
       </Routes>
       <Footer />
     </div>
@@ -70,6 +76,8 @@ function App() {
 App.defaultProps = {
   searchSend: PropTypes.string.isRequired,
   setSearchSend: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

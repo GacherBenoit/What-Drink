@@ -21,6 +21,8 @@ function Nav(
     recipes,
     searchSend,
     setSearchSend,
+    search,
+    setSearch,
   },
 ) {
   const [toggle, setToggle] = useState(true);
@@ -48,6 +50,8 @@ function Nav(
         recipes={recipes}
         searchSend={searchSend}
         setSearchSend={setSearchSend}
+        search={search}
+        setSearch={setSearch}
       />
     </div>
   );
@@ -56,6 +60,8 @@ function Nav(
 Nav.propTypes = {
   searchSend: PropTypes.string.isRequired,
   setSearchSend: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,

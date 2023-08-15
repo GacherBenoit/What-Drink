@@ -18,20 +18,18 @@ import icon from '../../assets/images/icon.png';
 function Search(
   {
     recipes,
-    searchSend,
+    search,
+    setSearch,
     setSearchSend,
   },
 ) {
-  // We define states for controlled field
-  const [search, SetSearch] = useState('');
-
   const navigate = useNavigate();
 
   // OnChange we set the state and select the first letter (with .charAt) to transform it
   // in upperCase (with .toUppercase).Finally concatain with a copy of the field value
   // only after the first letter (with .slice )and transform in lower case. Check MDN Js function in details and this post : https://stackoverflow.com/questions/71595722/auto-capitalization-of-input-value-in-react
   const handleSearchInput = (evt) => {
-    SetSearch(evt.target.value.charAt(0).toUpperCase()
+    setSearch(evt.target.value.charAt(0).toUpperCase()
             + evt.target.value.slice(1).toLowerCase());
   };
 
@@ -96,7 +94,7 @@ function Search(
             onKeyDown={(evt) => keyboardNavigation(
               evt,
               search,
-              SetSearch,
+              setSearch,
               handleSubmit,
             )}
           />
@@ -115,7 +113,7 @@ function Search(
                   className="navbar--search__input__items__list__element"
                 // Need to use anonym function to dont enter in a re-render loop.
                   onClick={
-                  () => (SetSearch(recipe.strDrink))
+                  () => (setSearch(recipe.strDrink))
                 }
                   key={recipe.idDrink}
                 >
@@ -131,8 +129,9 @@ function Search(
 // Prop types for our Component
 //
 Search.propTypes = {
-  searchSend: PropTypes.string.isRequired,
   setSearchSend: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,
