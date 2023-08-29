@@ -23,7 +23,7 @@
         &__current{
 
             width: 100%;
-            position: absolute;
+            position: relative;
             height: 100%;
             z-index: 1;
            
@@ -60,32 +60,27 @@
                }
             }
         }
-    }
-
-    //////////////////////////////////////////////// CURRENT CARD MEDIA QUERIES FOR SLIDER /////////////
+    } 
 }
-@media screen and (min-width: 375px) {
-    .searchResult{
-        &--cardlist{
-            padding: 30px;
-        }      
-    } 
-   }
-   @media screen and (min-width: 425px) {
-    .searchResult{
-        &--cardlist{
-            padding: 40px;
-        }      
-    } 
-   }   
-   @media screen and (min-width: 768px) {
-    .searchResult{
-        &--cardlist{
-            padding: 60px;
-        }      
-    } 
-   }   
-   @media screen and (min-width: 900px) {
+
+// Media Querries
+
+
+@media screen and (min-width: 900px) {
+
+    .card{
+        margin-right: inherit;
+        margin: 5px;
+        z-index: inherit;
+        opacity: 1;
+        
+    }
+    .current{
+        left: inherit;
+        top: inherit;
+        z-index: inherit;
+        animation: scaleAnimation none;
+    }
     .searchResult{
 
         height: fit-content;
@@ -121,3 +116,6 @@
         }
     } 
    }   
+
+
+   

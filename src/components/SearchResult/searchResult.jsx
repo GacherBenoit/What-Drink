@@ -13,40 +13,28 @@ import Card from '../Card/card';
 // Icons
 import Arrow from '../../assets/images/arrow.png';
 
-function SearchResult({ recipes, searchSend }) {
+function SearchResult({ recipes, cardToRender }) {
   // We define state to set if card is opened and wich one.
   const [cardClicked, setCardClicked] = useState({ clicked: false, index: 0 });
 
   // Change the currentCard index to switch current class
   const [cardIndex, setCardIndex] = useState(0);
 
-  // Define State for Card to render
-  // We define a state to not re-render card when search Input change
-  const [cardToMap, setCardToMap] = useState([]);
-
   useEffect(() => {
-    // The recipes filtered by search send by user
-    const filteredSearch = recipes.filter(
-      (recipe) => recipe.strDrink.includes(searchSend),
-    ).slice(0, 24);
-
-    // Set cards array to render filtered by search send by user
-    setCardToMap(filteredSearch);
-
     // Reset the current card index if user's search change
     setCardIndex(0);
-  }, [searchSend]);
+  }, [cardToRender]);
 
   // OnClick left
   const handleLeftClick = () => {
     if (cardIndex === 0) {
-      setCardIndex(cardToMap.length - 1);
+      setCardIndex(recipes.length - 1);
     } else setCardIndex(cardIndex - 1);
   };
 
   // Onclick right
   const handleRightClick = () => {
-    if (cardIndex === cardToMap.length - 1) {
+    if (cardIndex === recipes.length - 1) {
       setCardIndex(0);
     } else setCardIndex(cardIndex + 1);
   };
@@ -66,20 +54,20 @@ function SearchResult({ recipes, searchSend }) {
         <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
       </div>
       <section className="searchResult--cardlist">
-        {cardToMap.map((recipe, index) => (
+        {cardToRender && cardToRender.map((recipe, index) => (
           index === cardIndex ? (
-            <div key={`current-${recipe.idDrink}`} className="searchResult--cardlist__current">
-              <Card
-                key={recipe.idDrink}
-                index={index}
-                className="card current"
-                handleClickCard={handleClickCard}
-                cardClicked={cardClicked}
-                setCardClicked={setCardClicked}
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...recipe}
-              />
-            </div>
+            //<div key={`current-${recipe.idDrink}`} className="searchResult--cardlist__current">
+            <Card
+              key={recipe.idDrink}
+              index={index}
+              className="card current"
+              handleClickCard={handleClickCard}
+              cardClicked={cardClicked}
+              setCardClicked={setCardClicked}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...recipe}
+            />
+            //</div>
           ) : (
             <Card
               key={recipe.idDrink}
@@ -107,13 +95,19 @@ function SearchResult({ recipes, searchSend }) {
 }
 // Prop types for our Component
 SearchResult.propTypes = {
-  searchSend: PropTypes.string.isRequired,
   className: PropTypes.string,
   cardClicked: PropTypes.shape({
     clicked: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
   }),
   recipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.string.isRequired,
+      strDrink: PropTypes.string.isRequired,
+      strDrinkThumb: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  cardToRender: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,
       strDrink: PropTypes.string.isRequired,

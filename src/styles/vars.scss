@@ -91,20 +91,4 @@ moz-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.35);}
 
 }
 
-@mixin hiddenCardForMobile () {
-  @media (max-width: 899px){
-  @for $i from 7 through 100 {
-    .card:nth-child(#{$i}) {
-      opacity: 0;
-    }}
-  }
-}
-@mixin hiddenCardForDesktop () {
-  @media (min-width: 900px){
-  @for $i from 25 through 100 {
-    .card:nth-child(#{$i}) {
-      opacity: 0;
-    }}
-  }
-}
 

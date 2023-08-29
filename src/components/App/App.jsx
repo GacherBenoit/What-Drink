@@ -20,23 +20,23 @@ function App() {
   // State to register all the recipe send by API
   const [recipes, setRecipes] = useState([]);
 
-  // State to register search send by input
-  // We use it to not re-render cards at every change of the controlled field
-  const [searchSend, setSearchSend] = useState('');
-
   // We define states for controlled field
   const [search, setSearch] = useState('');
+
+  // We define another State to render Card only when search button is clicked
+  const [cardToRender,setCardToRender] = useState([]);
 
   // Welaunch the useEffect to fetch data of recipes to access them into multiple components
   // In this app , for Search and SearchResult components
   // Search component for the user's shearch and propositions
   // SearchResult component to show result of the user's search with the cards
-  const baseUrlforCocktailCategory = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
+
 
  // Welaunch the useEffect to fetch data of recipes to access them into multiple components
   // In this app , for Search and SearchResult components
   // Search component for the user's shearch and propositions
   // SearchResult component to show result of the user's search with the cards
+
   const baseUrlSearchByName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
   const baseUrlSearchByFirstLetter = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${search}`;
   // In response part, we iterate on every element on drink with map
@@ -49,12 +49,14 @@ function App() {
     const apiUrl = search.length === 1 ? baseUrlSearchByFirstLetter : baseUrlSearchByName;
     axios.get(apiUrl)
       .then((response) => {
-        const modifiedDrinks = response.data.drinks.map((drink) => {
-          const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase()
-           + drink.strDrink.slice(1).toLowerCase();
-          return { ...drink, strDrink: capitalizedDrink };
-        });
-        setRecipes(modifiedDrinks);
+        if (response.data.drinks) { // Vérifiez si drinks est défini
+          const modifiedDrinks = response.data.drinks.map((drink) => {
+            const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase()
+             + drink.strDrink.slice(1).toLowerCase();
+            return { ...drink, strDrink: capitalizedDrink };
+          });
+          setRecipes(modifiedDrinks);
+        }
       })
       .catch((err) => console.log(err));
   }, [search]);
@@ -63,17 +65,16 @@ function App() {
     <div className="app">
       <Nav
         recipes={recipes}
-        searchSend={searchSend}
-        setSearchSend={setSearchSend}
         search={search}
         setSearch={setSearch}
+        setCardToRender={setCardToRender}
       />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cocktails" element={<Cocktails />} />
         <Route path="/tools&tips" element={<ToolsAndTips />} />
         <Route path="/whoweare" element={<WhoWeAre />} />
-        <Route path="/searchresult" element={<SearchResult recipes={recipes} searchSend={searchSend} search={search} />} />
+        <Route path="/searchresult" element={<SearchResult recipes={recipes} cardToRender={cardToRender} />} />
       </Routes>
       <Footer />
     </div>
@@ -81,11 +82,17 @@ function App() {
 }
 // Prop types for our Component
 App.defaultProps = {
-  searchSend: PropTypes.string.isRequired,
-  setSearchSend: PropTypes.func.isRequired,
+  setCardToRender: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.string.isRequired,
+      strDrink: PropTypes.string.isRequired,
+      strDrinkThumb: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  cardToRender: PropTypes.arrayOf(
     PropTypes.shape({
       idDrink: PropTypes.string.isRequired,
       strDrink: PropTypes.string.isRequired,

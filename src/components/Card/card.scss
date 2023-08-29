@@ -12,7 +12,7 @@
     position: relative;
     @include vars.card-boxShadow();
     z-index: -1;
-    margin-right: -210px;
+   /*  margin-right: -210px; */
     
     &--container {
 
@@ -181,16 +181,17 @@
 ///////////////////////////////////                                   ///////////////
 //////////////////////////////////// SLIDER  CONFIG  MEDIA QUERIES  /////////////////
 
-@include vars.hiddenCardForMobile;
+/* @include vars.hiddenCardForMobile;
 @include vars.hiddenCardForDesktop;
-
+ */
 .current { // Current class Card on first plan
-    left: 45px;
-    top: 113px;
-    animation: scaleAnimation 0.7s forwards;
+ /*    left: 45px;
+    top: 113px; */
+    position: relative; 
+   /*  animation: scaleAnimation 0.7s forwards; */
 }
 
-@keyframes scaleAnimation {
+/* @keyframes scaleAnimation {
     0% {
       transform: scale(1);
     }
@@ -201,29 +202,29 @@
     100% {
       transform: scale(1.15);
     }
-  }
+  } */
 
 @media screen and (min-width: 375px) {
     .card{
-        margin-right: -205px;
+  /*       margin-right: -205px; */
         
     }
     .current{
-        left: 70px;
+       /*  left: 70px; */
     }
   
    }
 
    @media screen and (min-width: 425px) {
     .card{
-        margin-right: -210px;
+       /*  margin-right: -210px; */
         
     }
     .current{
-        left: 75px;
-        top: 94px;
+      /*   left: 75px;
+        top: 94px; */
     }
-    @keyframes scaleAnimation {
+   /*  @keyframes scaleAnimation {
         0% {
           transform: scale(1);
         }
@@ -234,16 +235,16 @@
         100% {
           transform: scale(1.25);
         }
-      }
+      } */
    }
    @media screen and (min-width: 768px) {
     .card{
-        margin-right: -190px;
+      /*   margin-right: -190px; */
         
     }
     .current{
-        left: 210px;
-        top: 120px;
+     /*    left: 210px;
+        top: 120px; */
     }
    
    }
