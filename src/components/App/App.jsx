@@ -30,6 +30,13 @@ function App() {
   // In this app , for Search and SearchResult components
   // Search component for the user's shearch and propositions
   // SearchResult component to show result of the user's search with the cards
+
+
+ // Welaunch the useEffect to fetch data of recipes to access them into multiple components
+  // In this app , for Search and SearchResult components
+  // Search component for the user's shearch and propositions
+  // SearchResult component to show result of the user's search with the cards
+
   const baseUrlSearchByName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
   const baseUrlSearchByFirstLetter = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${search}`;
   // In response part, we iterate on every element on drink with map
