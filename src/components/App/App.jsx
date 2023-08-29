@@ -40,27 +40,17 @@ function App() {
   // And set the State with the new object
 
   useEffect(() => {
-    if (search.length === 1) {
-      axios.get(baseUrlSearchByFirstLetter)
-        .then((response) => {
-          const modifiedDrinks = response.data.drinks.map((drink) => {
-            const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase() + drink.strDrink.slice(1).toLowerCase();
-            return { ...drink, strDrink: capitalizedDrink };
-          });
-          setRecipes(modifiedDrinks);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      axios.get(baseUrlSearchByName)
-        .then((response) => {
-          const modifiedDrinks = response.data.drinks.map((drink) => {
-            const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase() + drink.strDrink.slice(1).toLowerCase();
-            return { ...drink, strDrink: capitalizedDrink };
-          });
-          setRecipes(modifiedDrinks);
-        })
-        .catch((err) => console.log(err));
-    }
+    const apiUrl = search.length === 1 ? baseUrlSearchByFirstLetter : baseUrlSearchByName;
+    axios.get(apiUrl)
+      .then((response) => {
+        const modifiedDrinks = response.data.drinks.map((drink) => {
+          const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase()
+           + drink.strDrink.slice(1).toLowerCase();
+          return { ...drink, strDrink: capitalizedDrink };
+        });
+        setRecipes(modifiedDrinks);
+      })
+      .catch((err) => console.log(err));
   }, [search]);
 
   return (
