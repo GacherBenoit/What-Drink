@@ -33,13 +33,21 @@ function App() {
   // SearchResult component to show result of the user's search with the cards
   const baseUrlforCocktailCategory = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
 
+ // Welaunch the useEffect to fetch data of recipes to access them into multiple components
+  // In this app , for Search and SearchResult components
+  // Search component for the user's shearch and propositions
+  // SearchResult component to show result of the user's search with the cards
+  const baseUrlSearchByName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
+  const baseUrlSearchByFirstLetter = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${search}`;
   // In response part, we iterate on every element on drink with map
   // Extract the value of the property strDrink
   // Make the letter convertion with different method toUpperCase & toLowerCase
   // Use destructuring to create a new object, a copy of drink with the modified property strDrink
   // And set the State with the new object
+
   useEffect(() => {
-    axios.get(baseUrlforCocktailCategory)
+    const apiUrl = search.length === 1 ? baseUrlSearchByFirstLetter : baseUrlSearchByName;
+    axios.get(apiUrl)
       .then((response) => {
         const modifiedDrinks = response.data.drinks.map((drink) => {
           const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase()
