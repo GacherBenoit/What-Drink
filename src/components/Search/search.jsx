@@ -20,7 +20,7 @@ function Search(
     recipes,
     search,
     setSearch,
-    setSearchSend,
+    setCardToRender,
   },
 ) {
   const navigate = useNavigate();
@@ -64,10 +64,11 @@ function Search(
   }, [search]);
 
   // Function to redirect to the result page
-  // And get current user's search with handleSearchValue function
+  // And copy recipes to another state.
+  // We want to map on this new one to not render card on every input change.
   const handleSubmit = () => {
+    setCardToRender(recipes);
     navigate('/searchresult');
-    setSearchSend(search);
   };
 
   return (
@@ -129,7 +130,7 @@ function Search(
 // Prop types for our Component
 //
 Search.propTypes = {
-  setSearchSend: PropTypes.func.isRequired,
+  setCardToRender: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
