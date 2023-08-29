@@ -68,18 +68,18 @@ function SearchResult({ recipes, searchSend }) {
       <section className="searchResult--cardlist">
         {cardToMap.map((recipe, index) => (
           index === cardIndex ? (
-            <div key={`current-${recipe.idDrink}`} className="searchResult--cardlist__current">
-              <Card
-                key={recipe.idDrink}
-                index={index}
-                className="card current"
-                handleClickCard={handleClickCard}
-                cardClicked={cardClicked}
-                setCardClicked={setCardClicked}
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...recipe}
-              />
-            </div>
+            //<div key={`current-${recipe.idDrink}`} className="searchResult--cardlist__current">
+            <Card
+              key={recipe.idDrink}
+              index={index}
+              className="card current"
+              handleClickCard={handleClickCard}
+              cardClicked={cardClicked}
+              setCardClicked={setCardClicked}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...recipe}
+            />
+            //</div>
           ) : (
             <Card
               key={recipe.idDrink}

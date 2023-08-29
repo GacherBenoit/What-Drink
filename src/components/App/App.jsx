@@ -43,12 +43,14 @@ function App() {
     const apiUrl = search.length === 1 ? baseUrlSearchByFirstLetter : baseUrlSearchByName;
     axios.get(apiUrl)
       .then((response) => {
-        const modifiedDrinks = response.data.drinks.map((drink) => {
-          const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase()
-           + drink.strDrink.slice(1).toLowerCase();
-          return { ...drink, strDrink: capitalizedDrink };
-        });
-        setRecipes(modifiedDrinks);
+        if (response.data.drinks) { // Vérifiez si drinks est défini
+          const modifiedDrinks = response.data.drinks.map((drink) => {
+            const capitalizedDrink = drink.strDrink.charAt(0).toUpperCase()
+             + drink.strDrink.slice(1).toLowerCase();
+            return { ...drink, strDrink: capitalizedDrink };
+          });
+          setRecipes(modifiedDrinks);
+        }
       })
       .catch((err) => console.log(err));
   }, [search]);
