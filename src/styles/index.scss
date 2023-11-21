@@ -18,7 +18,11 @@ font-family: vars.$main-font;
     font-size: 24px;
   }
   }
-
+@media screen and (min-width: 900px) {
+  #root {
+    font-size: 30px;
+  }
+}
   @media screen and (min-width: 1400px) {
     #root {
       font-size: 36px;

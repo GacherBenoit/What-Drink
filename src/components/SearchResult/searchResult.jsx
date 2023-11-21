@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 // Component
 import Card from '../Card/card';
+import Background from '../Background/background';
 
 function SearchResult({ recipes, cardToRender }) {
   // We define state to set if card is opened and wich one.
@@ -25,6 +26,7 @@ function SearchResult({ recipes, cardToRender }) {
 
   return (
     <div className="searchResult">
+      <Background />
       <div className="searchResult--header">
         <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
       </div>

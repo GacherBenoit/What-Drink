@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    margin: 20px;
+    margin: 10px;
     @include vars.card-boxShadow();
   /*   z-index: -1; */
     
@@ -121,7 +121,7 @@
            
             &__image{
 
-                width: auto;
+                width: 240px;
                 height: 100%;
                 transition-property: height;
                 transition-duration: 2s;
@@ -130,8 +130,8 @@
                 
                 &__show{
 
-                    width: auto;
-                    height: 203px;
+                    width: 240px;
+                    height: 55px;
                     transition-property: height;
                     transition-duration: 2s;
                     position: relative;
@@ -268,7 +268,7 @@
                
                 &__image{
     
-                    width: auto;
+                    width: 380px;
                     height: 100%;
                     transition-property: height;
                     transition-duration: 2s;
@@ -277,8 +277,8 @@
                     
                     &__show{
     
-                        width: auto;
-                        height: 300px;
+                        width: 380px;
+                        height: 70px;
                         transition-property: height;
                         transition-duration: 2s;
                         position: relative;
@@ -313,7 +313,7 @@
                             background-color: orange;
                             height: 70px;
                             padding-left: 20px;
-                            padding-top: 23px;
+                            padding-top: 20px;
                             font-size: xx-large;
     
                         }

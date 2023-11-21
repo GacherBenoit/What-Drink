@@ -12,6 +12,7 @@ function Card({
   className, index, cardClicked, handleClickCard, ...recipe
 }) {
   const { strDrink, strDrinkThumb } = recipe;
+  console.log(recipe)
   return (
     <div className={className}>
       <div className="card--container">

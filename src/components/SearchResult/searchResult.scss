@@ -18,10 +18,10 @@
 
          &__container {
 
-            position: absolute; /* Utilisation de position absolute */
+            position: absolute; /* Use position absolute */
             left: 0;
-            width: 100%; /* Assure que la largeur soit à 100% */
-            overflow: auto; /* Ajout du défilement pour le cas où le contenu dépasse */
+            width: 100%; 
+            overflow: auto; /* Add scrolling if content exceeds original size */
 
                     /* Hide scrollbar for (Chrome, Safari) */
             &::-webkit-scrollbar {
@@ -60,14 +60,9 @@
         opacity: 1;
         
     }
-    .current{
-        left: inherit;
-        top: inherit;
-        z-index: inherit;
-        animation: scaleAnimation none;
-    }
-    .searchResult{
 
+    .searchResult{
+        
         height: fit-content;
         
         &--header{
@@ -78,25 +73,27 @@
 
         &--cardlist{
 
-            height: inherit;
+           /*  height: inherit; */
+            width: 100%;
+            height: 100%;
             flex-wrap: wrap;
             padding: 5px;
             justify-content: flex-start;
+           
             
+            &__container{
 
-            &__arrows{
-
-            visibility: hidden;
-
+                width: 100%;
+                height: 100%;
+                position: inherit;
+                overflow: inherit;
             }
 
-            &__current{
+            &__caroussel{
 
-                position:inherit;
-                height: initial;
-                z-index: inherit;
-                width: inherit;
-
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     } 

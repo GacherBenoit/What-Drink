@@ -174,8 +174,15 @@
            transform: translate(0%);
            top: -45px;
 
+           &__field{
+
+            height: 44px;
+
+           }
+
            &__items{
-  
+            
+            bottom: 15px;
             justify-content: center;
             margin-right: 0px;
 
@@ -189,6 +196,7 @@
                 width: 72px;
                 border: solid 2px white;
                 top: 1px;
+                height: 40px;
             }
             &__image{
 
@@ -218,6 +226,6 @@
 
         .navbar--search__input__items__button{
 
-            top: 0;
+            top: 3px;
         }
         }
