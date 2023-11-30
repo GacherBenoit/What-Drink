@@ -33,18 +33,20 @@ function SearchResult({ recipes, cardToRender }) {
       <section className="searchResult--cardlist">
         <div className="searchResult--cardlist__container">
           <div className="searchResult--cardlist__caroussel">
-            {cardToRender && cardToRender.map((recipe, index) => (
-              <Card
-                key={recipe.idDrink}
-                index={index}
-                className="card"
-                handleClickCard={handleClickCard}
-                cardClicked={cardClicked}
-                setCardClicked={setCardClicked}
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...recipe}
-              />
-            ))}
+            {cardToRender.length === 0
+              ? <p className="searchResult--cardlist__message"> Please enter a recipe in field </p>
+              : cardToRender && cardToRender.map((recipe, index) => (
+                <Card
+                  key={recipe.idDrink}
+                  index={index}
+                  className="card"
+                  handleClickCard={handleClickCard}
+                  cardClicked={cardClicked}
+                  setCardClicked={setCardClicked}
+                  // eslint-disable-next-line react/jsx-props-no-spreading
+                  {...recipe}
+                />
+              ))}
           </div>
         </div>
       </section>

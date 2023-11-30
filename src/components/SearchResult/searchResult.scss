@@ -15,6 +15,11 @@
         display: flex;
         align-items: center;
 
+        &__message {
+
+            margin: auto;
+            
+        }
 
          &__container {
 
@@ -79,7 +84,7 @@
             flex-wrap: wrap;
             padding: 5px;
             justify-content: flex-start;
-           
+  
             
             &__container{
 
