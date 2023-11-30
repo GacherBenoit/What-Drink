@@ -18,7 +18,7 @@ function SearchResult({ recipes, cardToRender }) {
   const handleClickCard = (index) => {
     setCardClicked((prevState) => ({
       ...prevState,
-      clicked: !prevState.clicked, // Inversion of 'clicked' property
+      clicked: !prevState.clicked || prevState.index !== index, // Inversion of 'clicked' property
       // eslint-disable-next-line object-shorthand
       index: index, // Update the index property
     }));

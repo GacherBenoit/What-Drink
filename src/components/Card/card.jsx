@@ -17,6 +17,15 @@ function Card({
     <div className={className}>
       <div className="card--container">
         <div className="card--container__element">
+          <div className={`card--container__element__ingredient${cardClicked.index === index && cardClicked.clicked === true ? '__show' : ''}`}>
+            <h4>Ingredient List</h4>
+            <p>{recipe.strIngredient1}</p>
+            <p>{recipe.strIngredient2}</p>
+            <p>{recipe.strIngredient3}</p>
+            <p>{recipe.strIngredient4}</p>
+            <p>{recipe.strIngredient5}</p>
+            <p>{recipe.strIngredient6}</p>
+          </div>
           <div className="card--container__element__link">
             <div className={`card--container__element__link__content${cardClicked.index === index && cardClicked.clicked === true ? '__show' : ''}`}>
               <button type="button" className="card--container__element__link__content__button" onClick={() => handleClickCard(index)}>
