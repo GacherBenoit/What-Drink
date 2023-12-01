@@ -47,7 +47,7 @@ function Search(
       // eslint-disable-next-line no-return-assign
       setTimeout(() => {
         listToHide[0].classList.add('hidden-effect');
-      }, 2000);
+      }, 1000);
     }
   };
 
@@ -108,6 +108,7 @@ function Search(
             {/* If search input isnt empty and recipes(data from API) isnt empty too
              (to recieve data from API) ,the filter function is functionnal */}
             { search && recipes && recipes.filter((recipe) => recipe.strDrink.includes(search))
+              .slice(0, 5)
               .map((recipe) => (
                 <option
                   value={recipe.strDrink}

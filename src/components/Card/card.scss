@@ -9,10 +9,11 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    position: relative;
+    margin: 10px;
     @include vars.card-boxShadow();
-    z-index: -1;
-   /*  margin-right: -210px; */
+  /*   z-index: -1; */
+    
+   
     
     &--container {
 
@@ -32,6 +33,63 @@
             overflow: hidden;
             border-radius: 12px;
             border: solid white 1px;
+
+            &__ingredient{
+
+                display: none;
+                justify-content: center;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                z-index: -1;
+    
+                &__show{
+                    
+                    display: inline-grid;
+                    place-items: center;
+                    width: 100%;
+                    position: absolute;
+                    top: 60px;
+                    z-index: 0;
+                    opacity: 0;
+                    transition-property: opacity;
+                    transition-duration: 1s;
+                    transform: translateY(0px);
+                    animation: 2.5s ingredientShow forwards;
+
+                    @keyframes ingredientShow {
+                        50% {
+                            opacity: 0;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+                    // Compatibility
+                    -webkit-transition-property: opacity;
+                    -webkit-transition-duration: 1s;
+                    -webkit-animation: 3s ingredientShow forwards;
+                }
+
+                &__title{
+
+                    margin:5px;
+                }
+
+                &__list{
+
+                    display: flex;
+                }
+
+                &__element{
+
+                    margin: 2px;
+                }
+
+                &__icon{
+                    width: 20px;
+                }
+            }
 
             &__link{
 
@@ -118,10 +176,9 @@
                 }
             }
            
-
             &__image{
 
-                width: auto;
+                width: 240px;
                 height: 100%;
                 transition-property: height;
                 transition-duration: 2s;
@@ -130,8 +187,8 @@
                 
                 &__show{
 
-                    width: auto;
-                    height: 203px;
+                    width: 240px;
+                    height: 55px;
                     transition-property: height;
                     transition-duration: 2s;
                     position: relative;
@@ -178,65 +235,154 @@
         }
     }
 }
-///////////////////////////////////                                   ///////////////
-//////////////////////////////////// SLIDER  CONFIG  MEDIA QUERIES  /////////////////
-
-/* @include vars.hiddenCardForMobile;
-@include vars.hiddenCardForDesktop;
- */
-.current { // Current class Card on first plan
- /*    left: 45px;
-    top: 113px; */
-    position: relative; 
-   /*  animation: scaleAnimation 0.7s forwards; */
-}
-
-/* @keyframes scaleAnimation {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-        transform: scale(1.07);
-        transform: translate(-400px);
-      }
-    100% {
-      transform: scale(1.15);
-    }
-  } */
-
-@media screen and (min-width: 375px) {
-    .card{
-  /*       margin-right: -205px; */
-        
-    }
-    .current{
-       /*  left: 70px; */
-    }
-  
-   }
 
    @media screen and (min-width: 425px) {
     .card{
-       /*  margin-right: -210px; */
-        
-    }
-    .current{
-      /*   left: 75px;
-        top: 94px; */
-    }
-   /*  @keyframes scaleAnimation {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-            transform: scale(1.07);
-            transform: translate(-400px);
-          }
-        100% {
-          transform: scale(1.25);
-        }
-      } */
-   }
+      width: 326px;
+      height: 606px;
+      padding: 50px;
+      margin: 20px;
+      @include vars.card-boxShadow();
+    /*   z-index: -1; */
+      
+     
+      
+      &--container {
+  
+          width: 303px;
+          height: 565px;
+  
+          &__element{
+  
+              width: 388px;
+              height: 98%;
+              overflow: hidden;
+              border-radius: 12px;
+              border: solid white 1px;
+  
+              &__link{
+  
+                  position: absolute;
+                  width: 44px;
+                  height: 45px;
+                  background-color: white;
+                  left: 244px;
+                  top: 499px;
+                  clip-path: circle(50% at 50% 50%);
+  
+  
+                  &__content{
+  
+                      position: relative;
+                      width: 36px;
+                      height: 36px;
+                      background-color: #FF9800;
+                      left: 4px;
+                      top: 4px;
+                      clip-path: circle(50% at 50% 50%);
+
+                      &__show{
+
+                        position: relative;
+                        width: 36px;
+                        height: 36px;
+                        background-color: #FF9800;
+                        left: 4px;     // HERE TO ANIMATE CIRCLE IN ARROW
+                        top: 4px;
+                     
+                        }
+                              
+                        &__button {
+    
+                            width: 50px;
+                            height: 50px;
+                            background-color: orange;
+                            display: flex;
+                            
+                        }
+    
+                        &__logo{
+    
+                            width: 36px;
+                            height: 36px;
+                            padding: 2px;
+                            transition-property: opacity;
+                            transition-duration: 1.5s;
+                            opacity: 1;
+                           
+                            &__show{
+                                // CSS ANIMATION HERE TO HIDDE POINT
+                                width: 36px;
+                                height: 36px;
+                                padding: 2px;  
+                                transition-property: opacity;
+                                transition-duration: 0.5s;
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+               
+                &__image{
+    
+                    width: 380px;
+                    height: 100%;
+                    transition-property: height;
+                    transition-duration: 2s;
+                    position: relative;
+                    z-index: -1;
+                    
+                    &__show{
+    
+                        width: 380px;
+                        height: 60px;
+                        transition-property: height;
+                        transition-duration: 2s;
+                        position: relative;
+                        z-index: -1;
+                    }
+    
+    
+                     &__bottom{
+                        
+                        position: relative;
+                        bottom: 75px;
+                        z-index: -1;
+                        background-color: white;
+                        height: 58px;
+                        transition-property: height;
+                        transition-duration: 2s;
+    
+                        &__show{
+    
+                            position: relative;
+                            bottom: 75px;
+                            z-index: -1;
+                            background-color: white;
+                            height: 180px;
+                            transition-property: height;
+                            transition-duration: 2s;
+                        }
+                    
+    
+                        &__title{
+    
+                            background-color: orange;
+                            height: 70px;
+                            padding-left: 20px;
+                            padding-top: 20px;
+                            font-size: xx-large;
+    
+                        }
+                        
+                    }
+                  }
+                } 
+              }
+             }      
+           } 
+
+   
    @media screen and (min-width: 768px) {
     .card{
       /*   margin-right: -190px; */

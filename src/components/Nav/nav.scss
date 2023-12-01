@@ -5,7 +5,7 @@
   box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
   position: fixed;
   background-color: vars.$nav-color ;
-  z-index: 1;
+  z-index: 999;
 
   &--burger__menu {
     display: flex;
@@ -54,6 +54,7 @@
       transition: transform 0.5s ease-in-out;
       text-align: center;
       position: absolute;
+      
       
       &__open{
         display: flex;
@@ -194,7 +195,7 @@
       
       &--burger__menu {
 
-        height: 110px;
+        height: 130px;
 
         &__button{
 

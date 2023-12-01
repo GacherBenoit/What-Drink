@@ -56,6 +56,7 @@
                 font-size: 0.9em;
                 margin-top: -8px;
                 transition: opacity 2s, height 2s; // For transition animation to be smoother
+                
             
                 &__element:first-child{
 
@@ -115,15 +116,34 @@
 	opacity: 1;
     
 }
-// When the user select a suggestion in the search bar , the fiels is not focus. So we set opacity to 0 to hide the list of suggestion.
+// When the user select a suggestion in the search bar , the fiels is not focus. So we set opacity to 0 to hide the list of suggestion.Add display none to be sure elements can't be clicked 
 .navbar--search__input__field:not(:focus) ~ .navbar--search__input__items__list{
-     opacity: 0;
+   
+        animation: hidden 1s ;
+        animation-fill-mode: forwards;
+
+    @keyframes hidden {
+        0% {
+          opacity: 1;
+        }
+        30% {
+            opacity: 0.7;
+        }
+        70% {
+            opacity: 0;
+        }
+        100% {
+          opacity: 0;
+          display: none;
+        }
+      }
  }
 
  .hidden-effect{
     
     transition: opacity 1.5s, height 1.5s;
     opacity: 0;
+    
  }
 // Media Queries
 
@@ -154,8 +174,15 @@
            transform: translate(0%);
            top: -45px;
 
+           &__field{
+
+            height: 44px;
+
+           }
+
            &__items{
-  
+            
+            bottom: 15px;
             justify-content: center;
             margin-right: 0px;
 
@@ -169,6 +196,7 @@
                 width: 72px;
                 border: solid 2px white;
                 top: 1px;
+                height: 40px;
             }
             &__image{
 
@@ -198,6 +226,6 @@
 
         .navbar--search__input__items__button{
 
-            top: 0;
+            top: 3px;
         }
         }

@@ -3,46 +3,22 @@ import './searchResult.scss';
 
 // import NPM
 import {
-  React, useState, useEffect,
+  React, useState, useEffect, useRef
 } from 'react';
 import PropTypes from 'prop-types';
 
 // Component
 import Card from '../Card/card';
-
-// Icons
-import Arrow from '../../assets/images/arrow.png';
+import Background from '../Background/background';
 
 function SearchResult({ recipes, cardToRender }) {
   // We define state to set if card is opened and wich one.
   const [cardClicked, setCardClicked] = useState({ clicked: false, index: 0 });
 
-  // Change the currentCard index to switch current class
-  const [cardIndex, setCardIndex] = useState(0);
-
-  useEffect(() => {
-    // Reset the current card index if user's search change
-    setCardIndex(0);
-  }, [cardToRender]);
-
-  // OnClick left
-  const handleLeftClick = () => {
-    if (cardIndex === 0) {
-      setCardIndex(recipes.length - 1);
-    } else setCardIndex(cardIndex - 1);
-  };
-
-  // Onclick right
-  const handleRightClick = () => {
-    if (cardIndex === recipes.length - 1) {
-      setCardIndex(0);
-    } else setCardIndex(cardIndex + 1);
-  };
-
   const handleClickCard = (index) => {
     setCardClicked((prevState) => ({
       ...prevState,
-      clicked: !prevState.clicked, // Inversion of 'clicked' property
+      clicked: !prevState.clicked || prevState.index !== index, // Inversion of 'clicked' property
       // eslint-disable-next-line object-shorthand
       index: index, // Update the index property
     }));
@@ -50,46 +26,30 @@ function SearchResult({ recipes, cardToRender }) {
 
   return (
     <div className="searchResult">
+      <Background />
       <div className="searchResult--header">
         <h1 className="searchResult--header__title">WE FOUND FOR YOU</h1>
       </div>
       <section className="searchResult--cardlist">
-        {cardToRender && cardToRender.map((recipe, index) => (
-          index === cardIndex ? (
-            //<div key={`current-${recipe.idDrink}`} className="searchResult--cardlist__current">
-            <Card
-              key={recipe.idDrink}
-              index={index}
-              className="card current"
-              handleClickCard={handleClickCard}
-              cardClicked={cardClicked}
-              setCardClicked={setCardClicked}
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...recipe}
-            />
-            //</div>
-          ) : (
-            <Card
-              key={recipe.idDrink}
-              index={index}
-              className="card"
-              handleClickCard={handleClickCard}
-              cardClicked={cardClicked}
-              setCardClicked={setCardClicked}
-               // eslint-disable-next-line react/jsx-props-no-spreading
-              {...recipe}
-            />
-          )
-        ))}
+        <div className="searchResult--cardlist__container">
+          <div className="searchResult--cardlist__caroussel">
+            {cardToRender.length === 0
+              ? <p className="searchResult--cardlist__message"> Please enter a recipe in field </p>
+              : cardToRender && cardToRender.map((recipe, index) => (
+                <Card
+                  key={recipe.idDrink}
+                  index={index}
+                  className="card"
+                  handleClickCard={handleClickCard}
+                  cardClicked={cardClicked}
+                  setCardClicked={setCardClicked}
+                  // eslint-disable-next-line react/jsx-props-no-spreading
+                  {...recipe}
+                />
+              ))}
+          </div>
+        </div>
       </section>
-      <div className="searchResult--cardlist__arrows">
-        <button type="button" label="previous recipe" className="searchResult--cardlist__arrows__left__button" onClick={handleLeftClick}>
-          <img src={Arrow} alt="" className="searchResult--cardlist__arrows__left__button__image" />
-        </button>
-        <button type="button" label="next recipe" className="searchResult--cardlist__arrows__right__button" onClick={handleRightClick}>
-          <img src={Arrow} alt="" className="searchResult--cardlist__arrows__right__button__image" />
-        </button>
-      </div>
     </div>
   );
 }

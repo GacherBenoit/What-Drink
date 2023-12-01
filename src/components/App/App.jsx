@@ -23,8 +23,8 @@ function App() {
   // We define states for controlled field
   const [search, setSearch] = useState('');
 
-  // We define another State to render Card only when search button is clicked
-  const [cardToRender,setCardToRender] = useState([]);
+  // We define another State to render with .map Card only when search button is clicked
+  const [cardToRender, setCardToRender] = useState([]);
 
   // Welaunch the useEffect to fetch data of recipes to access them into multiple components
   // In this app , for Search and SearchResult components

@@ -10,58 +10,48 @@
     }
     
     &--cardlist{
-       //We set index to 0 to have the suggestion list foward to the cards
-       position: relative;
-       z-index: 0;
-        height: 85vh;
+       
+        height: 80vh;    
         display: flex;
         align-items: center;
-        overflow: hidden;
-        padding: 10px;
-       
 
-        &__current{
+        &__message {
 
-            width: 100%;
-            position: relative;
-            height: 100%;
-            z-index: 1;
-           
+            margin: auto;
+            
         }
-        
-        &__arrows{
 
-            display: flex;
-            justify-content: space-around;
-            position: relative;
-            bottom: 76px;
+         &__container {
 
-            &__left{
+            position: absolute; /* Use position absolute */
+            left: 0;
+            width: 100%; 
+            overflow: auto; /* Add scrolling if content exceeds original size */
 
-               &__button{
+                    /* Hide scrollbar for (Chrome, Safari) */
+            &::-webkit-scrollbar {
+                display: none;
+      }
 
-                background-color: white;
+            /* Hide scrollbar for Firefox */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+         }
 
-                &__image{
-                    width: 50px;
-                    transform: rotate(180deg);
-                }
-               }
-            }
-            &__right{
+         &__caroussel {
 
-               &__button{
-
-                background-color: white;
-
-                &__image{
-                    width: 50px;
-                }
-               }
-            }
+          display: flex;
+          /* overflow: hidden; */
+          width: 100%;
+          white-space: nowrap;
+          gap: 10px;
+         }
         }
-    } 
+
+         
+
 }
+
 
 // Media Querries
 
@@ -75,43 +65,40 @@
         opacity: 1;
         
     }
-    .current{
-        left: inherit;
-        top: inherit;
-        z-index: inherit;
-        animation: scaleAnimation none;
-    }
-    .searchResult{
 
+    .searchResult{
+        
         height: fit-content;
         
         &--header{
 
-            padding-top: 120px;
+            padding-top: 140px;
         
         }   
 
         &--cardlist{
 
-            height: inherit;
+           /*  height: inherit; */
+            width: 100%;
+            height: 100%;
             flex-wrap: wrap;
             padding: 5px;
             justify-content: flex-start;
+  
             
+            &__container{
 
-            &__arrows{
-
-            visibility: hidden;
-
+                width: 100%;
+                height: 100%;
+                position: inherit;
+                overflow: inherit;
             }
 
-            &__current{
+            &__caroussel{
 
-                position:inherit;
-                height: initial;
-                z-index: inherit;
-                width: inherit;
-
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     } 
